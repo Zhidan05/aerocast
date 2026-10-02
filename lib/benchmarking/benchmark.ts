@@ -1,5 +1,6 @@
 import { splitDataset } from '../accuracy/split';
 import { evaluateMonteCarlo, evaluateHistoricalMean, evaluateHistoricalMedian } from './baselines';
+export type { BenchmarkResult } from './types';
 import type { BenchmarkResult } from './types';
 
 export interface RunBenchmarkParameters {
@@ -7,7 +8,7 @@ export interface RunBenchmarkParameters {
   destinationCity: string;
   flightClass: string;
   daysLeft: number;
-  tolerance: number;
+  daysTolerance: number;
   calibrationRatio: number;
   splitSeed: number;
   monteCarloSeed: number;
@@ -31,7 +32,7 @@ export function runBenchmark(
     destinationCity: params.destinationCity,
     flightClass: params.flightClass,
     daysLeft: params.daysLeft,
-    tolerance: params.tolerance,
+    tolerance: params.daysTolerance,
     iterations: params.iterations,
     seed: params.monteCarloSeed
   });

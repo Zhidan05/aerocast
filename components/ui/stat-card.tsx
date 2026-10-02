@@ -1,7 +1,7 @@
 import { Info, type LucideIcon } from "lucide-react";
 
 export function StatCard({ label, value, helper, icon: Icon, tone = "blue", highlight = false, tooltip }: {
-  label: string; value: string | number; helper?: string; icon?: LucideIcon;
+  label: string; value: React.ReactNode; helper?: string; icon?: LucideIcon;
   tone?: "blue" | "indigo" | "green" | "amber"; highlight?: boolean; tooltip?: string;
 }) {
   return <div className={`card stat-card tone-${tone} ${highlight ? "stat-highlight" : ""}`}>

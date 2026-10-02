@@ -52,7 +52,7 @@ export function BenchmarkResults({ result }: { result: BenchmarkResult }) {
             </tr>
           </thead>
           <tbody>
-            {result.baselines.map((baseline) => (
+            {result.baselines.map((baseline: any) => (
               <tr key={baseline.method}>
                 <td className="font-semibold text-slate-700">{baseline.method}</td>
                 <td className="font-mono text-blue-700 font-medium"><PriceDisplay amount={baseline.expectedPrice} /></td>
