@@ -37,20 +37,20 @@ export function PriceDisplay({
   }
 
   const content = (
-    <div className={`flex flex-col ${className}`}>
+    <span className={`inline-flex flex-col ${className}`}>
       <span>{inrStr}</span>
       <span className="text-[0.8em] text-slate-500 font-normal mt-0.5 leading-none">{idrStr}</span>
-    </div>
+    </span>
   );
 
   if (showInfo && lastUpdated) {
     return (
-      <div 
+      <span 
         className="cursor-help" 
         title={`Konversi perkiraan berdasarkan kurs terakhir diperbarui: ${new Date(lastUpdated).toLocaleString('id-ID')}`}
       >
         {content}
-      </div>
+      </span>
     );
   }
 
