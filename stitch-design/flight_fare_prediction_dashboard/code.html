@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@500;600&amp;family=Plus+Jakarta+Sans:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = {
+  darkMode: "class",
+  theme: {
+    extend: {
+      "colors": {
+        "on-error-container": "#93000a",
+        "outline": "#737686",
+        "danger": "#EF4444",
+        "on-primary-container": "#eeefff",
+        "on-secondary-fixed-variant": "#3323cc",
+        "outline-variant": "#c3c6d7",
+        "text-muted": "#64748B",
+        "primary-fixed-dim": "#b4c5ff",
+        "tertiary": "#943700",
+        "error-container": "#ffdad6",
+        "on-secondary-fixed": "#0f0069",
+        "on-surface": "#131b2e",
+        "surface-dim": "#d2d9f4",
+        "on-tertiary": "#ffffff",
+        "on-tertiary-fixed": "#360f00",
+        "on-secondary-container": "#fffbff",
+        "primary": "#004ac6",
+        "on-primary": "#ffffff",
+        "inverse-primary": "#b4c5ff",
+        "error": "#ba1a1a",
+        "tertiary-fixed-dim": "#ffb596",
+        "secondary-container": "#645efb",
+        "surface-container-lowest": "#ffffff",
+        "canvas": "#F8FAFC",
+        "on-primary-fixed": "#00174b",
+        "surface-container": "#eaedff",
+        "on-tertiary-fixed-variant": "#7d2d00",
+        "surface-tint": "#0053db",
+        "on-surface-variant": "#434655",
+        "border-subtle": "#E2E8F0",
+        "on-error": "#ffffff",
+        "warning": "#F59E0B",
+        "secondary": "#4b41e1",
+        "secondary-fixed": "#e2dfff",
+        "inverse-on-surface": "#eef0ff",
+        "surface": "#FFFFFF",
+        "on-tertiary-container": "#ffede6",
+        "border-strong": "#CBD5E1",
+        "surface-variant": "#dae2fd",
+        "primary-fixed": "#dbe1ff",
+        "surface-container-low": "#f2f3ff",
+        "on-background": "#131b2e",
+        "inverse-surface": "#283044",
+        "on-secondary": "#ffffff",
+        "tertiary-fixed": "#ffdbcd",
+        "surface-bright": "#faf8ff",
+        "surface-container-high": "#e2e7ff",
+        "primary-container": "#2563eb",
+        "tertiary-container": "#bc4800",
+        "background": "#faf8ff",
+        "surface-container-highest": "#dae2fd",
+        "on-primary-fixed-variant": "#003ea8",
+        "secondary-fixed-dim": "#c3c0ff",
+        "success": "#16A34A"
+      },
+      "borderRadius": {
+        "DEFAULT": "0.25rem",
+        "lg": "0.5rem",
+        "xl": "0.75rem",
+        "full": "9999px"
+      },
+      "spacing": {
+        "gutter-mobile": "0.75rem",
+        "margin-mobile": "1rem",
+        "space-xl": "2rem",
+        "gutter": "1.5rem",
+        "space-sm": "0.5rem",
+        "space-lg": "1.5rem",
+        "space-xs": "0.25rem",
+        "margin": "2rem",
+        "space-md": "1rem"
+      },
+      "fontFamily": {
+        "headline-sm": ["Plus Jakarta Sans"],
+        "headline-md": ["Plus Jakarta Sans"],
+        "body-lg": ["Inter"],
+        "headline-lg": ["Plus Jakarta Sans"],
+        "stat-mono-sm": ["JetBrains Mono"],
+        "headline-xl-mobile": ["Plus Jakarta Sans"],
+        "headline-xl": ["Plus Jakarta Sans"],
+        "body-sm": ["Inter"],
+        "stat-mono-lg": ["JetBrains Mono"],
+        "body-md": ["Inter"],
+        "label-lg": ["Inter"],
+        "label-md": ["Inter"]
+      },
+      "fontSize": {
+        "headline-sm": ["16px", {"lineHeight": "24px", "fontWeight": "600"}],
+        "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+        "headline-lg": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+        "stat-mono-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+        "headline-xl-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "700"}],
+        "headline-xl": ["36px", {"lineHeight": "44px", "fontWeight": "700"}],
+        "body-sm": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+        "stat-mono-lg": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+        "label-lg": ["14px", {"lineHeight": "20px", "fontWeight": "500"}],
+        "label-md": ["12px", {"lineHeight": "16px", "fontWeight": "500"}]
+      }
+    }
+  }
+}</script></head><body class="bg-canvas font-body-md text-body-md text-on-surface antialiased"><header class="fixed top-0 left-0 right-0 z-40 bg-surface/90 backdrop-blur-xl border-b border-border-subtle"><div class="h-16 w-full px-space-lg flex items-center justify-between"><div class="flex items-center gap-space-lg"><div class="flex items-center gap-space-sm"><img alt="AeroCast Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1XuEbhLtwWCPv3azW4FJvJmqfc74dInoBJnfs79LyXRGy1vwXxO1YZdHZPdvvGPdvPEK8FNxRVRwwtUfqJs4SOrd9TP3XzMSRKzd6fjBrSjhTJIDhxK00kOlBZNiHnNyB-1PocTtYn6ayTf3ogiw2qqA73V6CF3mWoEVnaAE0LaV3gGSOX6YJ5YASnG-fvjdQljYa_X2kc703xqTGWiHAgjuAfdmdFetWAoPjk2W_xyWV9xc9bziRql4It3"/><div class="flex flex-col"><span class="font-headline-sm text-headline-sm text-on-surface leading-tight tracking-tight">AeroCast</span><span class="font-label-md text-label-md text-text-muted leading-none">Monte Carlo Fare Forecasting</span></div></div><div class="h-5 w-px bg-border-subtle hidden sm:block"></div><div class="hidden sm:flex items-center gap-space-xs px-space-sm py-1 bg-surface-container-low rounded-full border border-border-subtle"><span class="relative flex h-2 w-2"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-success opacity-75"></span><span class="relative inline-flex rounded-full h-2 w-2 bg-success"></span></span><span class="font-stat-mono-sm text-stat-mono-sm text-on-surface">Dataset: 300,153 records</span></div></div><div class="flex items-center gap-space-md"><div class="flex items-center gap-space-xs px-space-sm py-1 rounded-full bg-surface-container border border-border-subtle"><span class="material-symbols-outlined text-sm text-primary">bolt</span><span class="font-label-md text-label-md text-primary font-medium">Engine: Active</span></div><button class="relative p-1.5 text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low rounded-lg transition-colors"><span class="material-symbols-outlined text-xl">notifications</span><span class="absolute top-1 right-1 w-2 h-2 rounded-full bg-primary"></span></button><div class="h-6 w-px bg-border-subtle"></div><div class="flex items-center gap-space-sm pl-1"><img alt="Profile" class="w-8 h-8 rounded-full object-cover ring-1 ring-border-strong" src="https://lh3.googleusercontent.com/aida-public/AB6AXuChMG1rOJLkiUfMuC-mruvGrGU7xf-Y60Z0CG7PAEZKDll3CGdgJE9EeLbgIyp2cpa0pCBD1hDMrbmYh1GzMpygwlqthaAlGN0sf5aCRFzDTaEcRpSQ6o9gNbmnOaHpgY3T33BRriY03UN18Cd1iZ6T7iFbKLa0QGGdSYHm9MWX60vLJsPugQvaGFMCubH__hY9Uy1SreOa2qeM6tvpqCJew6_bnDmqIzV6JUSfvMhXztojUs2tTHHdcg"/><div class="hidden lg:flex flex-col text-left"><span class="font-label-lg text-label-lg text-on-surface font-semibold leading-tight">Dr. Sarah Lin</span><span class="font-label-md text-label-md text-text-muted leading-tight">Data Science</span></div></div></div></div></header><aside class="fixed left-0 top-16 bottom-0 w-64 bg-surface border-r border-border-subtle z-30 flex flex-col justify-between p-space-md overflow-y-auto"><div class="flex flex-col gap-space-md"><div class="px-space-xs"><span class="font-label-md text-label-md uppercase tracking-wider text-text-muted font-semibold">Analytics Suite</span></div><nav class="flex flex-col gap-1" data-active-classes="bg-primary-container text-on-primary font-semibold shadow-sm"><a aria-current="page" class="flex items-center gap-space-sm px-space-sm py-2 rounded-lg transition-all group bg-primary-container text-on-primary font-semibold shadow-sm" data-path="dashboard" href="#"><span class="material-symbols-outlined text-xl text-text-muted group-hover:text-on-surface">dashboard</span><span class="font-label-lg text-label-lg">Dashboard</span></a><a class="flex items-center gap-space-sm px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-all group" data-path="dataset-explorer" href="#"><span class="material-symbols-outlined text-xl text-text-muted group-hover:text-on-surface">database</span><span class="font-label-lg text-label-lg">Dataset Explorer</span></a><a class="flex items-center gap-space-sm px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-all group" data-path="monte-carlo-simulation" href="#"><span class="material-symbols-outlined text-xl text-text-muted group-hover:text-on-surface">query_stats</span><span class="font-label-lg text-label-lg">Monte Carlo Simulation</span></a><a class="flex items-center gap-space-sm px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-all group" data-path="experiments" href="#"><span class="material-symbols-outlined text-xl text-text-muted group-hover:text-on-surface">science</span><span class="font-label-lg text-label-lg">Experiments</span></a><a class="flex items-center gap-space-sm px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-all group" data-path="prediction-accuracy" href="#"><span class="material-symbols-outlined text-xl text-text-muted group-hover:text-on-surface">tune</span><span class="font-label-lg text-label-lg">Prediction Accuracy</span></a><a class="flex items-center gap-space-sm px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-all group" data-path="about-method" href="#"><span class="material-symbols-outlined text-xl text-text-muted group-hover:text-on-surface">menu_book</span><span class="font-label-lg text-label-lg">About Method</span></a></nav></div><div class="mt-space-md p-space-md bg-canvas rounded-xl border border-border-subtle flex flex-col gap-space-xs"><div class="flex items-center justify-between"><span class="font-label-md text-label-md text-text-muted font-medium">Model Runtime</span><span class="inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-semibold bg-primary-fixed text-on-primary-fixed uppercase tracking-wider">Compute 4x</span></div><div class="font-headline-sm text-headline-sm text-on-surface font-semibold truncate">Supabase + MC v2.4</div><div class="flex items-center gap-1.5 mt-1"><span class="w-1.5 h-1.5 rounded-full bg-success"></span><span class="font-stat-mono-sm text-stat-mono-sm text-text-muted">Distributed Node Active</span></div></div></aside><div class="pl-64"><main class="w-full pt-16 px-space-lg min-h-screen bg-canvas"><div class="flex flex-col w-full pb-space-xl">
+<!-- Top Control Bar / Dashboard Header -->
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-space-md py-space-lg">
+<div class="flex flex-col gap-1 min-w-0">
+<div class="flex items-center gap-space-sm">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-semibold bg-surface-container-high text-primary tracking-wide uppercase">Simulation v2.4</span>
+<span class="font-stat-mono-sm text-stat-mono-sm text-text-muted">Updated: 4m ago</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface tracking-tight">Flight Fare Prediction Dashboard</h1>
+<p class="font-body-md text-body-md text-text-muted">Explore historical airline fares and run Monte Carlo simulations to estimate possible ticket price distributions.</p>
+</div>
+<div class="flex items-center gap-space-sm flex-shrink-0">
+<button class="inline-flex items-center gap-2 px-space-md py-2.5 rounded-lg bg-surface text-on-surface font-label-lg text-label-lg shadow-sm hover:bg-surface-container-low transition-all" type="button">
+<span class="material-symbols-outlined text-lg text-text-muted">file_download</span>
+        Export Output
+      </button>
+<button class="inline-flex items-center gap-2 px-space-md py-2.5 rounded-lg bg-primary-container text-on-primary font-label-lg text-label-lg shadow-sm hover:brightness-110 active:scale-[0.99] transition-all" id="trigger-header-sim" type="button">
+<span class="material-symbols-outlined text-lg">add</span>
+<span>Run New Simulation</span>
+</button>
+</div>
+</div>
+<!-- KPI Cards: Global Corpus Overview (12-column grid) -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-space-md mb-space-lg">
+<!-- KPI 1 -->
+<div class="bg-surface rounded-xl p-space-md shadow-sm relative overflow-hidden flex flex-col justify-between">
+<div class="flex items-start justify-between">
+<span class="font-label-md text-label-md uppercase tracking-wider text-text-muted">Total Records</span>
+<span class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-lg">dataset</span>
+</span>
+</div>
+<div class="my-space-sm">
+<div class="font-stat-mono-lg text-stat-mono-lg text-on-surface">300,153</div>
+</div>
+<p class="font-body-sm text-body-sm text-text-muted">Historical observations across 6 airlines</p>
+<div class="absolute -bottom-6 -right-6 w-20 h-20 rounded-full bg-primary/5 pointer-events-none"></div>
+</div>
+<!-- KPI 2 -->
+<div class="bg-surface rounded-xl p-space-md shadow-sm relative overflow-hidden flex flex-col justify-between">
+<div class="flex items-start justify-between">
+<span class="font-label-md text-label-md uppercase tracking-wider text-text-muted">Airlines</span>
+<span class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-lg">airlines</span>
+</span>
+</div>
+<div class="my-space-sm">
+<div class="font-stat-mono-lg text-stat-mono-lg text-on-surface">6 Carriers</div>
+</div>
+<p class="font-body-sm text-body-sm text-text-muted truncate" title="Air India, Vistara, IndiGo, SpiceJet, AirAsia, GO FIRST">Air India, Vistara, IndiGo, SpiceJet, AirAsia, GO FIRST</p>
+<div class="absolute -bottom-6 -right-6 w-20 h-20 rounded-full bg-secondary/5 pointer-events-none"></div>
+</div>
+<!-- KPI 3 -->
+<div class="bg-surface rounded-xl p-space-md shadow-sm relative overflow-hidden flex flex-col justify-between">
+<div class="flex items-start justify-between">
+<span class="font-label-md text-label-md uppercase tracking-wider text-text-muted">Routes</span>
+<span class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center text-primary-container">
+<span class="material-symbols-outlined text-lg">alt_route</span>
+</span>
+</div>
+<div class="my-space-sm">
+<div class="font-stat-mono-lg text-stat-mono-lg text-on-surface">30 Corridors</div>
+</div>
+<p class="font-body-sm text-body-sm text-text-muted">Source-destination major metro pairs</p>
+<div class="absolute -bottom-6 -right-6 w-20 h-20 rounded-full bg-primary-container/5 pointer-events-none"></div>
+</div>
+<!-- KPI 4 -->
+<div class="bg-surface rounded-xl p-space-md shadow-sm relative overflow-hidden flex flex-col justify-between">
+<div class="flex items-start justify-between">
+<span class="font-label-md text-label-md uppercase tracking-wider text-text-muted">Average Dataset Price</span>
+<span class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center text-tertiary-container">
+<span class="material-symbols-outlined text-lg">currency_rupee</span>
+</span>
+</div>
+<div class="my-space-sm">
+<div class="font-stat-mono-lg text-stat-mono-lg text-on-surface">₹20,889</div>
+</div>
+<p class="font-body-sm text-body-sm text-text-muted">Across all cabin classes &amp; dates</p>
+<div class="absolute -bottom-6 -right-6 w-20 h-20 rounded-full bg-tertiary-container/5 pointer-events-none"></div>
+</div>
+</div>
+<!-- Quick Monte Carlo Simulation Setup Card -->
+<div class="bg-surface rounded-xl p-space-lg shadow-sm mb-space-lg">
+<div class="flex flex-col md:flex-row md:items-center justify-between pb-space-md gap-2">
+<div class="flex items-center gap-space-sm">
+<div class="w-9 h-9 rounded-lg bg-surface-container-high text-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-xl">tune</span>
+</div>
+<div>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Parametric Flight Simulator Setup</h2>
+<span class="font-body-sm text-body-sm text-text-muted">Configure stochastic pricing bounds and seed historical frequency</span>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-surface-container-low text-primary text-xs font-semibold">
+<span class="material-symbols-outlined text-sm">hub</span>
+          Engine: Stochastic Normal (GBM)
+        </span>
+</div>
+</div>
+<form class="mt-space-md" id="simulation-form" onsubmit="event.preventDefault(); window.runSimulationVisual();">
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-space-md">
+<!-- Source City -->
+<div class="flex flex-col gap-1.5">
+<label class="font-label-md text-label-md text-text-muted font-medium">Source City</label>
+<div class="relative">
+<select class="w-full appearance-none bg-surface-container-lowest text-on-surface rounded-lg px-3 py-2.5 font-body-md text-body-md shadow-sm pr-9 focus:outline-none focus:ring-2 focus:ring-primary/20">
+<option selected="">Delhi (DEL)</option>
+<option>Mumbai (BOM)</option>
+<option>Bangalore (BLR)</option>
+<option>Kolkata (CCU)</option>
+<option>Hyderabad (HYD)</option>
+<option>Chennai (MAA)</option>
+</select>
+<span class="material-symbols-outlined absolute right-2.5 top-3 text-text-muted pointer-events-none text-base">expand_more</span>
+</div>
+</div>
+<!-- Destination City -->
+<div class="flex flex-col gap-1.5">
+<label class="font-label-md text-label-md text-text-muted font-medium">Destination City</label>
+<div class="relative">
+<select class="w-full appearance-none bg-surface-container-lowest text-on-surface rounded-lg px-3 py-2.5 font-body-md text-body-md shadow-sm pr-9 focus:outline-none focus:ring-2 focus:ring-primary/20">
+<option>Delhi (DEL)</option>
+<option selected="">Mumbai (BOM)</option>
+<option>Bangalore (BLR)</option>
+<option>Kolkata (CCU)</option>
+<option>Hyderabad (HYD)</option>
+<option>Chennai (MAA)</option>
+</select>
+<span class="material-symbols-outlined absolute right-2.5 top-3 text-text-muted pointer-events-none text-base">expand_more</span>
+</div>
+</div>
+<!-- Cabin Class -->
+<div class="flex flex-col gap-1.5">
+<label class="font-label-md text-label-md text-text-muted font-medium">Cabin Class</label>
+<div class="relative">
+<select class="w-full appearance-none bg-surface-container-lowest text-on-surface rounded-lg px-3 py-2.5 font-body-md text-body-md shadow-sm pr-9 focus:outline-none focus:ring-2 focus:ring-primary/20">
+<option selected="">Economy</option>
+<option>Business</option>
+</select>
+<span class="material-symbols-outlined absolute right-2.5 top-3 text-text-muted pointer-events-none text-base">expand_more</span>
+</div>
+</div>
+<!-- Days Before Departure -->
+<div class="flex flex-col gap-1.5">
+<div class="flex items-center justify-between">
+<label class="font-label-md text-label-md text-text-muted font-medium">Days Out</label>
+<span class="px-1.5 py-0.2 rounded bg-surface-container-high text-primary font-stat-mono-sm text-[10px] font-semibold">Optimal window</span>
+</div>
+<div class="relative">
+<input class="w-full bg-surface-container-lowest text-on-surface font-stat-mono-sm text-stat-mono-sm rounded-lg px-3 py-2.5 shadow-sm focus:outline-none focus:ring-2 focus:ring-primary/20" max="50" min="1" type="number" value="7"/>
+<span class="absolute right-3 top-2.5 font-body-sm text-body-sm text-text-muted pointer-events-none">days</span>
+</div>
+</div>
+<!-- Number of Simulations -->
+<div class="flex flex-col gap-1.5">
+<label class="font-label-md text-label-md text-text-muted font-medium">Iterations (N)</label>
+<div class="relative">
+<select class="w-full appearance-none bg-surface-container-lowest text-on-surface rounded-lg px-3 py-2.5 font-stat-mono-sm text-stat-mono-sm shadow-sm pr-9 focus:outline-none focus:ring-2 focus:ring-primary/20">
+<option>100</option>
+<option>1,000</option>
+<option selected="">10,000</option>
+<option>100,000</option>
+</select>
+<span class="material-symbols-outlined absolute right-2.5 top-3 text-text-muted pointer-events-none text-base">expand_more</span>
+</div>
+</div>
+<!-- Days Tolerance -->
+<div class="flex flex-col gap-1.5">
+<label class="font-label-md text-label-md text-text-muted font-medium">Temporal Tolerance</label>
+<div class="relative">
+<select class="w-full appearance-none bg-surface-container-lowest text-on-surface rounded-lg px-3 py-2.5 font-body-md text-body-md shadow-sm pr-9 focus:outline-none focus:ring-2 focus:ring-primary/20">
+<option selected="">±1 day (6–8 days)</option>
+<option>±2 days (5–9 days)</option>
+<option>Exact day only (7d)</option>
+</select>
+<span class="material-symbols-outlined absolute right-2.5 top-3 text-text-muted pointer-events-none text-base">expand_more</span>
+</div>
+</div>
+</div>
+<!-- Action Footer with Validation / Matched Samples Indicator -->
+<div class="mt-space-lg pt-space-md bg-canvas rounded-lg p-space-md flex flex-col md:flex-row items-center justify-between gap-space-md">
+<div class="flex items-center gap-space-sm">
+<span class="w-2 h-2 rounded-full bg-success"></span>
+<p class="font-body-sm text-body-sm text-text-muted">
+            Corpus Match: <span class="font-semibold text-on-surface">842 historical flight records</span> for <span class="font-semibold text-on-surface">DEL → BOM</span> (Economy, 6–8 days out).
+          </p>
+</div>
+<div class="flex items-center gap-3 w-full md:w-auto">
+<button class="w-full md:w-auto inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-lg bg-primary-container text-on-primary font-headline-sm text-headline-sm shadow-sm hover:brightness-110 active:scale-[0.99] transition-all" id="simulate-btn" type="submit">
+<span class="material-symbols-outlined text-lg animate-pulse" id="sim-icon">casino</span>
+<span>Run Monte Carlo Simulation</span>
+</button>
+</div>
+</div>
+</form>
+</div>
+<!-- Prediction Summary Metrics (4 cards below the simulation card) -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-space-md mb-space-lg">
+<!-- Stat 1: Expected Price (Mean) -->
+<div class="bg-surface rounded-xl p-space-md shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md uppercase tracking-wider text-text-muted">Expected Price (Mean)</span>
+<span class="inline-flex items-center px-1.5 py-0.5 rounded text-[11px] font-semibold bg-surface-container-high text-success">
+          +1.2% vs 30d
+        </span>
+</div>
+<div class="my-space-xs">
+<div class="font-stat-mono-lg text-stat-mono-lg text-primary tracking-tight">₹9,850</div>
+</div>
+<div class="flex items-center gap-1 font-body-sm text-body-sm text-text-muted">
+<span>Standard Error: ±₹142</span>
+</div>
+</div>
+<!-- Stat 2: Median Price -->
+<div class="bg-surface rounded-xl p-space-md shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md uppercase tracking-wider text-text-muted">Median Price</span>
+<span class="inline-flex items-center px-1.5 py-0.5 rounded text-[11px] font-semibold bg-surface-container text-on-surface-variant">
+          P50
+        </span>
+</div>
+<div class="my-space-xs">
+<div class="font-stat-mono-lg text-stat-mono-lg text-on-surface tracking-tight">₹9,620</div>
+</div>
+<div class="flex items-center gap-1 font-body-sm text-body-sm text-text-muted">
+<span>Middle distribution center</span>
+</div>
+</div>
+<!-- Stat 3: Minimum Simulation -->
+<div class="bg-surface rounded-xl p-space-md shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md uppercase tracking-wider text-text-muted">Lower Tail (P5)</span>
+<span class="inline-flex items-center px-1.5 py-0.5 rounded text-[11px] font-semibold bg-surface-container-low text-text-muted">
+          5th Percentile
+        </span>
+</div>
+<div class="my-space-xs">
+<div class="font-stat-mono-lg text-stat-mono-lg text-on-surface tracking-tight">₹5,100</div>
+</div>
+<div class="flex items-center gap-1 font-body-sm text-body-sm text-text-muted">
+<span>Historical support threshold</span>
+</div>
+</div>
+<!-- Stat 4: Maximum Simulation -->
+<div class="bg-surface rounded-xl p-space-md shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md uppercase tracking-wider text-text-muted">Spike Tail (P95)</span>
+<span class="inline-flex items-center px-1.5 py-0.5 rounded text-[11px] font-semibold bg-surface-container-high text-tertiary">
+          95th Percentile
+        </span>
+</div>
+<div class="my-space-xs">
+<div class="font-stat-mono-lg text-stat-mono-lg text-on-surface tracking-tight">₹18,700</div>
+</div>
+<div class="flex items-center gap-1 font-body-sm text-body-sm text-text-muted">
+<span>Late surge volatility risk</span>
+</div>
+</div>
+</div>
+<!-- Main Dashboard Analytics Visualizations (12-column layout: 7 cols & 5 cols) -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg mb-space-lg">
+<!-- Left Column: 7 Cols - Monte Carlo Price Distribution Histogram -->
+<div class="lg:col-span-7 bg-surface rounded-xl p-space-lg shadow-sm flex flex-col justify-between">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between pb-space-md gap-space-sm">
+<div>
+<div class="flex items-center gap-2">
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Monte Carlo Price Distribution</h3>
+<span class="px-2 py-0.5 text-[11px] font-semibold rounded bg-surface-container text-primary">10,000 Runs</span>
+</div>
+<p class="font-body-sm text-body-sm text-text-muted">Empirical probability density derived from geometric Brownian price paths</p>
+</div>
+<div class="flex items-center gap-space-md text-xs font-label-md">
+<div class="flex items-center gap-1.5">
+<span class="w-3 h-0.5 bg-secondary"></span>
+<span class="text-text-muted">Median (₹9,620)</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="w-3 h-0.5 bg-primary"></span>
+<span class="text-text-muted">Mean (₹9,850)</span>
+</div>
+</div>
+</div>
+<!-- High Precision SVG Histogram Simulation Canvas -->
+<div class="relative w-full h-80 my-space-sm bg-surface-container-lowest rounded-lg p-space-sm flex flex-col justify-end">
+<svg aria-label="Flight fare stochastic price distribution histogram" class="w-full h-full" preserveaspectratio="none" viewbox="0 0 700 280">
+<defs>
+<lineargradient id="barGrad" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#2563EB" stop-opacity="0.85"></stop>
+<stop offset="100%" stop-color="#3B82F6" stop-opacity="0.25"></stop>
+</lineargradient>
+<lineargradient id="highlightGrad" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#4F46E5" stop-opacity="0.95"></stop>
+<stop offset="100%" stop-color="#6366F1" stop-opacity="0.35"></stop>
+</lineargradient>
+</defs>
+<!-- Horizontal Reference Gridlines -->
+<line stroke="#E2E8F0" stroke-dasharray="3,3" x1="40" x2="680" y1="40" y2="40"></line>
+<line stroke="#E2E8F0" stroke-dasharray="3,3" x1="40" x2="680" y1="100" y2="100"></line>
+<line stroke="#E2E8F0" stroke-dasharray="3,3" x1="40" x2="680" y1="160" y2="160"></line>
+<line stroke="#E2E8F0" x1="40" x2="680" y1="220" y2="220"></line>
+<!-- Y Axis Labels -->
+<text class="fill-text-muted text-[10px] font-stat-mono-sm" text-anchor="end" x="32" y="44">1,200</text>
+<text class="fill-text-muted text-[10px] font-stat-mono-sm" text-anchor="end" x="32" y="104">800</text>
+<text class="fill-text-muted text-[10px] font-stat-mono-sm" text-anchor="end" x="32" y="164">400</text>
+<text class="fill-text-muted text-[10px] font-stat-mono-sm" text-anchor="end" x="32" y="224">0</text>
+<!-- Histogram Bars (Synthetic distribution centered near ₹9,600-₹9,800) -->
+<!-- Bin 1 (4k-5k) -->
+<rect fill="url(#barGrad)" height="10" rx="2" width="22" x="52" y="210"></rect>
+<!-- Bin 2 (5k-6k) -->
+<rect fill="url(#barGrad)" height="24" rx="2" width="22" x="78" y="196"></rect>
+<!-- Bin 3 (6k-7k) -->
+<rect fill="url(#barGrad)" height="46" rx="2" width="22" x="104" y="174"></rect>
+<!-- Bin 4 (7k-8k) -->
+<rect fill="url(#barGrad)" height="92" rx="2" width="22" x="130" y="128"></rect>
+<!-- Bin 5 (8k-9k) -->
+<rect fill="url(#barGrad)" height="140" rx="2" width="22" x="156" y="80"></rect>
+<!-- Bin 6 (9k-10k) PEAK -->
+<rect fill="url(#highlightGrad)" height="174" rx="2" width="22" x="182" y="46"></rect>
+<!-- Bin 7 (10k-11k) -->
+<rect fill="url(#barGrad)" height="158" rx="2" width="22" x="208" y="62"></rect>
+<!-- Bin 8 (11k-12k) -->
+<rect fill="url(#barGrad)" height="122" rx="2" width="22" x="234" y="98"></rect>
+<!-- Bin 9 (12k-13k) -->
+<rect fill="url(#barGrad)" height="88" rx="2" width="22" x="260" y="132"></rect>
+<!-- Bin 10 (13k-14k) -->
+<rect fill="url(#barGrad)" height="60" rx="2" width="22" x="286" y="160"></rect>
+<!-- Bin 11 (14k-15k) -->
+<rect fill="url(#barGrad)" height="40" rx="2" width="22" x="312" y="180"></rect>
+<!-- Bin 12 (15k-16k) -->
+<rect fill="url(#barGrad)" height="28" rx="2" width="22" x="338" y="192"></rect>
+<!-- Bin 13 (16k-17k) -->
+<rect fill="url(#barGrad)" height="18" rx="2" width="22" x="364" y="202"></rect>
+<!-- Bin 14 (17k-18k) -->
+<rect fill="url(#barGrad)" height="12" rx="2" width="22" x="390" y="208"></rect>
+<!-- Bin 15 (18k-19k) -->
+<rect fill="url(#barGrad)" height="7" rx="2" width="22" x="416" y="213"></rect>
+<!-- Bin 16 (19k-20k) -->
+<rect fill="url(#barGrad)" height="4" rx="2" width="22" x="442" y="216"></rect>
+<!-- Density Curve Overlay -->
+<path d="M 50 216 Q 130 190, 160 85 T 195 46 T 240 100 T 320 180 T 460 218" fill="none" opacity="0.9" stroke="#2563EB" stroke-width="2.5"></path>
+<!-- Vertical Marker: Median (₹9,620) -->
+<line stroke="#4F46E5" stroke-dasharray="4,3" stroke-width="2" x1="193" x2="193" y1="30" y2="220"></line>
+<circle cx="193" cy="30" fill="#4F46E5" r="3"></circle>
+<!-- Vertical Marker: Mean (₹9,850) -->
+<line stroke="#004AC6" stroke-dasharray="4,3" stroke-width="2" x1="202" x2="202" y1="20" y2="220"></line>
+<circle cx="202" cy="20" fill="#004AC6" r="3"></circle>
+<!-- Marker Tags -->
+<rect fill="#004AC6" height="18" opacity="0.9" rx="4" width="95" x="145" y="12"></rect>
+<text class="text-[9px] font-stat-mono-sm font-semibold" fill="#FFFFFF" text-anchor="middle" x="192" y="24">Mean ₹9,850</text>
+<!-- Bottom Axis Tick Labels -->
+<text class="fill-text-muted text-[10px] font-stat-mono-sm" text-anchor="middle" x="52" y="240">₹4k</text>
+<text class="fill-text-muted text-[10px] font-stat-mono-sm" text-anchor="middle" x="130" y="240">₹7k</text>
+<text class="fill-text-muted text-[10px] font-stat-mono-sm" text-anchor="middle" x="208" y="240">₹10k</text>
+<text class="fill-text-muted text-[10px] font-stat-mono-sm" text-anchor="middle" x="286" y="240">₹13k</text>
+<text class="fill-text-muted text-[10px] font-stat-mono-sm" text-anchor="middle" x="364" y="240">₹16k</text>
+<text class="fill-text-muted text-[10px] font-stat-mono-sm" text-anchor="middle" x="442" y="240">₹20k</text>
+<text class="fill-text-muted text-[11px] font-label-md" text-anchor="middle" x="360" y="265">Simulated Ticket Price Bracket (INR)</text>
+</svg>
+</div>
+<!-- Histogram Meta Footer -->
+<div class="flex flex-wrap items-center justify-between text-xs text-text-muted pt-space-xs gap-2">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-sm text-success">check_circle</span>
+          Distribution fit: Lognormal (Skewness: +0.68, Kurtosis: 3.12)
+        </span>
+<span class="font-stat-mono-sm text-stat-mono-sm">Confidence: 95% CI [₹5,100 – ₹18,700]</span>
+</div>
+</div>
+<!-- Right Column: 5 Cols - Probability Breakdown & Practical Guidance -->
+<div class="lg:col-span-5 flex flex-col gap-space-md">
+<!-- Card: Probability Summary Bars -->
+<div class="bg-surface rounded-xl p-space-lg shadow-sm flex-1 flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between pb-space-sm">
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Probability Summary</h3>
+<span class="font-stat-mono-sm text-stat-mono-sm text-text-muted">Total: 100%</span>
+</div>
+<p class="font-body-sm text-body-sm text-text-muted mb-space-md">Likelihood of landing in specific price envelopes</p>
+<!-- Horizontal Bars -->
+<div class="space-y-space-md">
+<!-- Tier 1 -->
+<div>
+<div class="flex items-center justify-between text-xs mb-1">
+<span class="font-label-md text-label-md text-on-surface font-medium">Below ₹7,000</span>
+<div class="flex items-center gap-2">
+<span class="text-text-muted text-[11px]">Deep Value</span>
+<span class="font-stat-mono-sm text-stat-mono-sm font-semibold text-success">12.4%</span>
+</div>
+</div>
+<div class="w-full bg-surface-container rounded-full h-2.5 overflow-hidden">
+<div class="bg-success h-full rounded-full transition-all duration-700" style="width: 12.4%"></div>
+</div>
+</div>
+<!-- Tier 2 (Highest Likelihood) -->
+<div>
+<div class="flex items-center justify-between text-xs mb-1">
+<div class="flex items-center gap-1.5">
+<span class="font-label-md text-label-md text-on-surface font-semibold">₹7,000 – ₹10,000</span>
+<span class="px-1.5 py-0.2 rounded text-[10px] font-semibold bg-surface-container-high text-primary">Target</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="text-text-muted text-[11px]">Peak Likelihood</span>
+<span class="font-stat-mono-sm text-stat-mono-sm font-semibold text-primary">51.7%</span>
+</div>
+</div>
+<div class="w-full bg-surface-container rounded-full h-2.5 overflow-hidden">
+<div class="bg-primary-container h-full rounded-full transition-all duration-700" style="width: 51.7%"></div>
+</div>
+</div>
+<!-- Tier 3 -->
+<div>
+<div class="flex items-center justify-between text-xs mb-1">
+<span class="font-label-md text-label-md text-on-surface font-medium">₹10,000 – ₹15,000</span>
+<div class="flex items-center gap-2">
+<span class="text-text-muted text-[11px]">Above Expected</span>
+<span class="font-stat-mono-sm text-stat-mono-sm font-semibold text-secondary">29.3%</span>
+</div>
+</div>
+<div class="w-full bg-surface-container rounded-full h-2.5 overflow-hidden">
+<div class="bg-secondary-container h-full rounded-full transition-all duration-700" style="width: 29.3%"></div>
+</div>
+</div>
+<!-- Tier 4 -->
+<div>
+<div class="flex items-center justify-between text-xs mb-1">
+<span class="font-label-md text-label-md text-on-surface font-medium">Above ₹15,000</span>
+<div class="flex items-center gap-2">
+<span class="text-text-muted text-[11px]">Surge / Peak</span>
+<span class="font-stat-mono-sm text-stat-mono-sm font-semibold text-tertiary-container">6.6%</span>
+</div>
+</div>
+<div class="w-full bg-surface-container rounded-full h-2.5 overflow-hidden">
+<div class="bg-tertiary-container h-full rounded-full transition-all duration-700" style="width: 6.6%"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Callout Banner -->
+<div class="mt-space-md p-space-md rounded-xl bg-surface-container-low flex items-start gap-space-sm">
+<span class="material-symbols-outlined text-primary text-xl flex-shrink-0 mt-0.5">insights</span>
+<div class="flex flex-col gap-1">
+<span class="font-label-lg text-label-lg font-semibold text-on-surface">Optimal Booking Strategy</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+<span class="font-semibold text-primary">Insight: 64.1% probability</span> of paying under ₹10,000 when booking 7 days ahead for this route. Booking within the next 48 hours offers optimal risk-adjusted savings before the steep surge tail accelerates.
+            </p>
+</div>
+</div>
+</div>
+<!-- Route Health & Airline Breakdown Widget -->
+<div class="bg-surface rounded-xl p-space-md shadow-sm">
+<div class="flex items-center justify-between mb-space-sm">
+<span class="font-label-md text-label-md uppercase tracking-wider text-text-muted">Observed Carriers on DEL-BOM</span>
+<span class="font-stat-mono-sm text-stat-mono-sm text-text-muted">7-day Horizon</span>
+</div>
+<div class="grid grid-cols-3 gap-2 text-center">
+<div class="p-2 rounded-lg bg-surface-container-low">
+<div class="font-stat-mono-sm text-stat-mono-sm font-semibold text-on-surface">IndiGo</div>
+<div class="text-[11px] text-text-muted mt-0.5">₹8,490 avg</div>
+</div>
+<div class="p-2 rounded-lg bg-surface-container-low">
+<div class="font-stat-mono-sm text-stat-mono-sm font-semibold text-on-surface">Vistara</div>
+<div class="text-[11px] text-text-muted mt-0.5">₹10,210 avg</div>
+</div>
+<div class="p-2 rounded-lg bg-surface-container-low">
+<div class="font-stat-mono-sm text-stat-mono-sm font-semibold text-on-surface">Air India</div>
+<div class="text-[11px] text-text-muted mt-0.5">₹9,840 avg</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Route Specific Contextual Data & Recent Simulation Run Table -->
+<div class="bg-surface rounded-xl shadow-sm overflow-hidden mb-space-md">
+<div class="p-space-lg flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm">
+<div class="flex items-center gap-space-sm">
+<div class="w-8 h-8 rounded-lg bg-surface-container-high flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-lg">history_toggle_off</span>
+</div>
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Recent Simulation Runs &amp; Stress Tests</h3>
+<p class="font-body-sm text-body-sm text-text-muted">Quantile breakdowns across different departure horizons</p>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<button class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-surface-container text-on-surface text-xs font-medium hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-sm">filter_list</span> Filter
+        </button>
+</div>
+</div>
+<!-- Data Table -->
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead class="bg-surface-container-low text-text-muted font-label-md text-label-md">
+<tr>
+<th class="py-3 px-space-lg">Route &amp; Class</th>
+<th class="py-3 px-space-md">Days Out</th>
+<th class="py-3 px-space-md text-right">Runs (N)</th>
+<th class="py-3 px-space-md text-right">Min (P5)</th>
+<th class="py-3 px-space-md text-right">Median (P50)</th>
+<th class="py-3 px-space-md text-right">Mean</th>
+<th class="py-3 px-space-md text-right">Max (P95)</th>
+<th class="py-3 px-space-lg text-right">Volatility (σ)</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-border-subtle font-body-sm text-body-sm">
+<tr class="hover:bg-surface-container-lowest/60 transition-colors">
+<td class="py-3 px-space-lg font-medium text-on-surface flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+<span>DEL → BOM (Economy)</span>
+</td>
+<td class="py-3 px-space-md font-stat-mono-sm">7 days</td>
+<td class="py-3 px-space-md text-right font-stat-mono-sm">10,000</td>
+<td class="py-3 px-space-md text-right font-stat-mono-sm text-on-surface">₹5,100</td>
+<td class="py-3 px-space-md text-right font-stat-mono-sm font-semibold text-on-surface">₹9,620</td>
+<td class="py-3 px-space-md text-right font-stat-mono-sm text-primary font-semibold">₹9,850</td>
+<td class="py-3 px-space-md text-right font-stat-mono-sm text-on-surface">₹18,700</td>
+<td class="py-3 px-space-lg text-right font-stat-mono-sm text-text-muted">± 18.4%</td>
+</tr>
+<tr class="hover:bg-surface-container-lowest/60 transition-colors">
+<td class="py-3 px-space-lg font-medium text-on-surface flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+<span>DEL → BLR (Economy)</span>
+</td>
+<td class="py-3 px-space-md font-stat-mono-sm">14 days</td>
+<td class="py-3 px-space-md text-right font-stat-mono-sm">10,000</td>
+<td class="py-3 px-space-md text-right font-stat-mono-sm text-on-surface">₹6,200</td>
+<td class="py-3 px-space-md text-right font-stat-mono-sm font-semibold text-on-surface">₹8,100</td>
+<td class="py-3 px-space-md text-right font-stat-mono-sm text-primary font-semibold">₹8,340</td>
+<td class="py-3 px-space-md text-right font-stat-mono-sm text-on-surface">₹14,900</td>
+<td class="py-3 px-space-lg text-right font-stat-mono-sm text-text-muted">± 14.1%</td>
+</tr>
+<tr class="hover:bg-surface-container-lowest/60 transition-colors">
+<td class="py-3 px-space-lg font-medium text-on-surface flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-tertiary"></span>
+<span>BOM → CCU (Economy)</span>
+</td>
+<td class="py-3 px-space-md font-stat-mono-sm">3 days</td>
+<td class="py-3 px-space-md text-right font-stat-mono-sm">25,000</td>
+<td class="py-3 px-space-md text-right font-stat-mono-sm text-on-surface">₹11,400</td>
+<td class="py-3 px-space-md text-right font-stat-mono-sm font-semibold text-on-surface">₹16,800</td>
+<td class="py-3 px-space-md text-right font-stat-mono-sm text-primary font-semibold">₹17,210</td>
+<td class="py-3 px-space-md text-right font-stat-mono-sm text-on-surface">₹26,400</td>
+<td class="py-3 px-space-lg text-right font-stat-mono-sm text-text-muted">± 32.7%</td>
+</tr>
+<tr class="hover:bg-surface-container-lowest/60 transition-colors">
+<td class="py-3 px-space-lg font-medium text-on-surface flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-primary-container"></span>
+<span>DEL → BOM (Business)</span>
+</td>
+<td class="py-3 px-space-md font-stat-mono-sm">7 days</td>
+<td class="py-3 px-space-md text-right font-stat-mono-sm">10,000</td>
+<td class="py-3 px-space-md text-right font-stat-mono-sm text-on-surface">₹24,800</td>
+<td class="py-3 px-space-md text-right font-stat-mono-sm font-semibold text-on-surface">₹32,500</td>
+<td class="py-3 px-space-md text-right font-stat-mono-sm text-primary font-semibold">₹33,100</td>
+<td class="py-3 px-space-md text-right font-stat-mono-sm text-on-surface">₹48,900</td>
+<td class="py-3 px-space-lg text-right font-stat-mono-sm text-text-muted">± 12.2%</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<script>
+  // Interactive micro-simulation trigger handler
+  window.runSimulationVisual = function() {
+    const btn = document.getElementById('simulate-btn');
+    const icon = document.getElementById('sim-icon');
+    if (!btn || !icon) return;
+
+    const originalText = btn.innerHTML;
+    btn.disabled = true;
+    btn.classList.add('opacity-80');
+    btn.innerHTML = `<span class="material-symbols-outlined text-lg animate-spin">refresh</span><span>Computing 10,000 Paths...</span>`;
+
+    setTimeout(() => {
+      btn.innerHTML = originalText;
+      btn.disabled = false;
+      btn.classList.remove('opacity-80');
+    }, 650);
+  };
+
+  const headerTrigger = document.getElementById('trigger-header-sim');
+  if (headerTrigger) {
+    headerTrigger.addEventListener('click', () => {
+      window.runSimulationVisual();
+    });
+  }
+</script></main></div></body></html>

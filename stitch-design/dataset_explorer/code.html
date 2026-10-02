@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@500;600&amp;family=Plus+Jakarta+Sans:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = {
+  darkMode: "class",
+  theme: {
+    extend: {
+      "colors": {
+        "on-error-container": "#93000a",
+        "outline": "#737686",
+        "danger": "#EF4444",
+        "on-primary-container": "#eeefff",
+        "on-secondary-fixed-variant": "#3323cc",
+        "outline-variant": "#c3c6d7",
+        "text-muted": "#64748B",
+        "primary-fixed-dim": "#b4c5ff",
+        "tertiary": "#943700",
+        "error-container": "#ffdad6",
+        "on-secondary-fixed": "#0f0069",
+        "on-surface": "#131b2e",
+        "surface-dim": "#d2d9f4",
+        "on-tertiary": "#ffffff",
+        "on-tertiary-fixed": "#360f00",
+        "on-secondary-container": "#fffbff",
+        "primary": "#004ac6",
+        "on-primary": "#ffffff",
+        "inverse-primary": "#b4c5ff",
+        "error": "#ba1a1a",
+        "tertiary-fixed-dim": "#ffb596",
+        "secondary-container": "#645efb",
+        "surface-container-lowest": "#ffffff",
+        "canvas": "#F8FAFC",
+        "on-primary-fixed": "#00174b",
+        "surface-container": "#eaedff",
+        "on-tertiary-fixed-variant": "#7d2d00",
+        "surface-tint": "#0053db",
+        "on-surface-variant": "#434655",
+        "border-subtle": "#E2E8F0",
+        "on-error": "#ffffff",
+        "warning": "#F59E0B",
+        "secondary": "#4b41e1",
+        "secondary-fixed": "#e2dfff",
+        "inverse-on-surface": "#eef0ff",
+        "surface": "#FFFFFF",
+        "on-tertiary-container": "#ffede6",
+        "border-strong": "#CBD5E1",
+        "surface-variant": "#dae2fd",
+        "primary-fixed": "#dbe1ff",
+        "surface-container-low": "#f2f3ff",
+        "on-background": "#131b2e",
+        "inverse-surface": "#283044",
+        "on-secondary": "#ffffff",
+        "tertiary-fixed": "#ffdbcd",
+        "surface-bright": "#faf8ff",
+        "surface-container-high": "#e2e7ff",
+        "primary-container": "#2563eb",
+        "tertiary-container": "#bc4800",
+        "background": "#faf8ff",
+        "surface-container-highest": "#dae2fd",
+        "on-primary-fixed-variant": "#003ea8",
+        "secondary-fixed-dim": "#c3c0ff",
+        "success": "#16A34A"
+      },
+      "borderRadius": {
+        "DEFAULT": "0.25rem",
+        "lg": "0.5rem",
+        "xl": "0.75rem",
+        "full": "9999px"
+      },
+      "spacing": {
+        "gutter-mobile": "0.75rem",
+        "margin-mobile": "1rem",
+        "space-xl": "2rem",
+        "gutter": "1.5rem",
+        "space-sm": "0.5rem",
+        "space-lg": "1.5rem",
+        "space-xs": "0.25rem",
+        "margin": "2rem",
+        "space-md": "1rem"
+      },
+      "fontFamily": {
+        "headline-sm": ["Plus Jakarta Sans"],
+        "headline-md": ["Plus Jakarta Sans"],
+        "body-lg": ["Inter"],
+        "headline-lg": ["Plus Jakarta Sans"],
+        "stat-mono-sm": ["JetBrains Mono"],
+        "headline-xl-mobile": ["Plus Jakarta Sans"],
+        "headline-xl": ["Plus Jakarta Sans"],
+        "body-sm": ["Inter"],
+        "stat-mono-lg": ["JetBrains Mono"],
+        "body-md": ["Inter"],
+        "label-lg": ["Inter"],
+        "label-md": ["Inter"]
+      },
+      "fontSize": {
+        "headline-sm": ["16px", {"lineHeight": "24px", "fontWeight": "600"}],
+        "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+        "headline-lg": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+        "stat-mono-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+        "headline-xl-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "700"}],
+        "headline-xl": ["36px", {"lineHeight": "44px", "fontWeight": "700"}],
+        "body-sm": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+        "stat-mono-lg": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+        "label-lg": ["14px", {"lineHeight": "20px", "fontWeight": "500"}],
+        "label-md": ["12px", {"lineHeight": "16px", "fontWeight": "500"}]
+      }
+    }
+  }
+}</script></head><body class="bg-canvas font-body-md text-body-md text-on-surface antialiased"><header class="fixed top-0 left-0 right-0 z-40 bg-surface/90 backdrop-blur-xl border-b border-border-subtle"><div class="h-16 w-full px-space-lg flex items-center justify-between"><div class="flex items-center gap-space-lg"><div class="flex items-center gap-space-sm"><img alt="AeroCast Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1XuEbhLtwWCPv3azW4FJvJmqfc74dInoBJnfs79LyXRGy1vwXxO1YZdHZPdvvGPdvPEK8FNxRVRwwtUfqJs4SOrd9TP3XzMSRKzd6fjBrSjhTJIDhxK00kOlBZNiHnNyB-1PocTtYn6ayTf3ogiw2qqA73V6CF3mWoEVnaAE0LaV3gGSOX6YJ5YASnG-fvjdQljYa_X2kc703xqTGWiHAgjuAfdmdFetWAoPjk2W_xyWV9xc9bziRql4It3"/><div class="flex flex-col"><span class="font-headline-sm text-headline-sm text-on-surface leading-tight tracking-tight">AeroCast</span><span class="font-label-md text-label-md text-text-muted leading-none">Monte Carlo Fare Forecasting</span></div></div><div class="h-5 w-px bg-border-subtle hidden sm:block"></div><div class="hidden sm:flex items-center gap-space-xs px-space-sm py-1 bg-surface-container-low rounded-full border border-border-subtle"><span class="relative flex h-2 w-2"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-success opacity-75"></span><span class="relative inline-flex rounded-full h-2 w-2 bg-success"></span></span><span class="font-stat-mono-sm text-stat-mono-sm text-on-surface">Dataset: 300,153 records</span></div></div><div class="flex items-center gap-space-md"><div class="flex items-center gap-space-xs px-space-sm py-1 rounded-full bg-surface-container border border-border-subtle"><span class="material-symbols-outlined text-sm text-primary">bolt</span><span class="font-label-md text-label-md text-primary font-medium">Engine: Active</span></div><button class="relative p-1.5 text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low rounded-lg transition-colors"><span class="material-symbols-outlined text-xl">notifications</span><span class="absolute top-1 right-1 w-2 h-2 rounded-full bg-primary"></span></button><div class="h-6 w-px bg-border-subtle"></div><div class="flex items-center gap-space-sm pl-1"><img alt="Profile" class="w-8 h-8 rounded-full object-cover ring-1 ring-border-strong" src="https://lh3.googleusercontent.com/aida-public/AB6AXuChMG1rOJLkiUfMuC-mruvGrGU7xf-Y60Z0CG7PAEZKDll3CGdgJE9EeLbgIyp2cpa0pCBD1hDMrbmYh1GzMpygwlqthaAlGN0sf5aCRFzDTaEcRpSQ6o9gNbmnOaHpgY3T33BRriY03UN18Cd1iZ6T7iFbKLa0QGGdSYHm9MWX60vLJsPugQvaGFMCubH__hY9Uy1SreOa2qeM6tvpqCJew6_bnDmqIzV6JUSfvMhXztojUs2tTHHdcg"/><div class="hidden lg:flex flex-col text-left"><span class="font-label-lg text-label-lg text-on-surface font-semibold leading-tight">Dr. Sarah Lin</span><span class="font-label-md text-label-md text-text-muted leading-tight">Data Science</span></div></div></div></div></header><aside class="fixed left-0 top-16 bottom-0 w-64 bg-surface border-r border-border-subtle z-30 flex flex-col justify-between p-space-md overflow-y-auto"><div class="flex flex-col gap-space-md"><div class="px-space-xs"><span class="font-label-md text-label-md uppercase tracking-wider text-text-muted font-semibold">Analytics Suite</span></div><nav class="flex flex-col gap-1" data-active-classes="bg-primary-container text-on-primary font-semibold shadow-sm"><a class="flex items-center gap-space-sm px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-all group" data-path="dashboard" href="#"><span class="material-symbols-outlined text-xl text-text-muted group-hover:text-on-surface">dashboard</span><span class="font-label-lg text-label-lg">Dashboard</span></a><a aria-current="page" class="flex items-center gap-space-sm px-space-sm py-2 rounded-lg transition-all group bg-primary-container text-on-primary font-semibold shadow-sm" data-path="dataset-explorer" href="#"><span class="material-symbols-outlined text-xl text-text-muted group-hover:text-on-surface">database</span><span class="font-label-lg text-label-lg">Dataset Explorer</span></a><a class="flex items-center gap-space-sm px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-all group" data-path="monte-carlo-simulation" href="#"><span class="material-symbols-outlined text-xl text-text-muted group-hover:text-on-surface">query_stats</span><span class="font-label-lg text-label-lg">Monte Carlo Simulation</span></a><a class="flex items-center gap-space-sm px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-all group" data-path="experiments" href="#"><span class="material-symbols-outlined text-xl text-text-muted group-hover:text-on-surface">science</span><span class="font-label-lg text-label-lg">Experiments</span></a><a class="flex items-center gap-space-sm px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-all group" data-path="prediction-accuracy" href="#"><span class="material-symbols-outlined text-xl text-text-muted group-hover:text-on-surface">tune</span><span class="font-label-lg text-label-lg">Prediction Accuracy</span></a><a class="flex items-center gap-space-sm px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-all group" data-path="about-method" href="#"><span class="material-symbols-outlined text-xl text-text-muted group-hover:text-on-surface">menu_book</span><span class="font-label-lg text-label-lg">About Method</span></a></nav></div><div class="mt-space-md p-space-md bg-canvas rounded-xl border border-border-subtle flex flex-col gap-space-xs"><div class="flex items-center justify-between"><span class="font-label-md text-label-md text-text-muted font-medium">Model Runtime</span><span class="inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-semibold bg-primary-fixed text-on-primary-fixed uppercase tracking-wider">Compute 4x</span></div><div class="font-headline-sm text-headline-sm text-on-surface font-semibold truncate">Supabase + MC v2.4</div><div class="flex items-center gap-1.5 mt-1"><span class="w-1.5 h-1.5 rounded-full bg-success"></span><span class="font-stat-mono-sm text-stat-mono-sm text-text-muted">Distributed Node Active</span></div></div></aside><div class="pl-64"><main class="w-full pt-16 px-space-lg min-h-screen bg-canvas"><div class="flex flex-col w-full pb-16">
+<!-- Top Operational Header -->
+<section class="flex flex-col lg:flex-row lg:items-center justify-between gap-space-md mb-space-lg">
+<div class="flex flex-col">
+<div class="flex items-center gap-space-xs mb-1">
+<span class="px-2 py-0.5 rounded-full bg-surface-container-high text-primary font-stat-mono-sm text-stat-mono-sm tracking-wider uppercase font-semibold">Corpus Index v2.1</span>
+<span class="text-text-muted text-body-sm">•</span>
+<span class="text-text-muted font-body-sm text-body-sm">Last Synced: 14 mins ago</span>
+</div>
+<h1 class="font-headline-xl text-headline-xl text-on-surface tracking-tight">Dataset Explorer</h1>
+<p class="font-body-md text-body-md text-text-muted mt-1 max-w-2xl">
+        Inspect, filter, and analyze the historical flight price dataset (300,153 records) across core Indian aviation corridors.
+      </p>
+</div>
+<!-- Global CTA Buttons -->
+<div class="flex items-center gap-space-sm flex-wrap">
+<button class="flex items-center gap-space-xs px-space-md py-2.5 rounded-lg bg-surface text-on-surface shadow-sm hover:bg-surface-container-low transition-all">
+<span class="material-symbols-outlined text-lg text-text-muted">menu_book</span>
+<span class="font-label-lg text-label-lg font-medium">Dataset Documentation</span>
+</button>
+<button class="flex items-center gap-space-xs px-space-md py-2.5 rounded-lg bg-primary-container text-on-primary shadow-sm hover:brightness-110 active:scale-[0.99] transition-all" id="exportBtn">
+<span class="material-symbols-outlined text-lg">download</span>
+<span class="font-label-lg text-label-lg font-semibold">Export Filtered Data</span>
+</button>
+</div>
+</section>
+<!-- Metric Overview Cards: 6 Col Grid -->
+<section class="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-6 gap-space-md mb-space-xl">
+<!-- Card 1 -->
+<div class="bg-surface rounded-xl p-space-md shadow-sm flex flex-col justify-between group hover:shadow-md transition-shadow">
+<div class="flex items-center justify-between text-text-muted mb-2">
+<span class="font-label-md text-label-md tracking-wider uppercase">Total Records</span>
+<span class="material-symbols-outlined text-base group-hover:text-primary transition-colors">dataset</span>
+</div>
+<div class="font-stat-mono-lg text-stat-mono-lg text-on-surface font-semibold tracking-tight">300,153</div>
+<div class="mt-2 flex items-center gap-1.5">
+<span class="px-1.5 py-0.5 rounded-full bg-surface-container-high text-primary font-stat-mono-sm text-stat-mono-sm">100% Corpus</span>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="bg-surface rounded-xl p-space-md shadow-sm flex flex-col justify-between group hover:shadow-md transition-shadow">
+<div class="flex items-center justify-between text-text-muted mb-2">
+<span class="font-label-md text-label-md tracking-wider uppercase">Airlines</span>
+<span class="material-symbols-outlined text-base group-hover:text-primary transition-colors">airlines</span>
+</div>
+<div class="font-stat-mono-lg text-stat-mono-lg text-on-surface font-semibold tracking-tight">6 Carriers</div>
+<div class="mt-2 flex items-center gap-1.5">
+<span class="text-text-muted font-body-sm text-body-sm truncate" title="AI, UK, 6E, SG, I5, G8">AI, UK, 6E, SG, I5, G8</span>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="bg-surface rounded-xl p-space-md shadow-sm flex flex-col justify-between group hover:shadow-md transition-shadow">
+<div class="flex items-center justify-between text-text-muted mb-2">
+<span class="font-label-md text-label-md tracking-wider uppercase">Metro Hubs</span>
+<span class="material-symbols-outlined text-base group-hover:text-primary transition-colors">location_city</span>
+</div>
+<div class="font-stat-mono-lg text-stat-mono-lg text-on-surface font-semibold tracking-tight">6 Hubs</div>
+<div class="mt-2 flex items-center gap-1.5">
+<span class="text-text-muted font-body-sm text-body-sm truncate">DEL, BOM, BLR, MAA+</span>
+</div>
+</div>
+<!-- Card 4 -->
+<div class="bg-surface rounded-xl p-space-md shadow-sm flex flex-col justify-between group hover:shadow-md transition-shadow">
+<div class="flex items-center justify-between text-text-muted mb-2">
+<span class="font-label-md text-label-md tracking-wider uppercase">Active Routes</span>
+<span class="material-symbols-outlined text-base group-hover:text-primary transition-colors">connecting_airports</span>
+</div>
+<div class="font-stat-mono-lg text-stat-mono-lg text-on-surface font-semibold tracking-tight">30 Pairs</div>
+<div class="mt-2 flex items-center gap-1.5">
+<span class="px-1.5 py-0.5 rounded-full bg-surface-container-high text-on-surface font-stat-mono-sm text-stat-mono-sm">Bilateral Grid</span>
+</div>
+</div>
+<!-- Card 5 -->
+<div class="bg-surface rounded-xl p-space-md shadow-sm flex flex-col justify-between group hover:shadow-md transition-shadow">
+<div class="flex items-center justify-between text-text-muted mb-2">
+<span class="font-label-md text-label-md tracking-wider uppercase">Economy Class</span>
+<span class="material-symbols-outlined text-base group-hover:text-primary transition-colors">airline_seat_recline_normal</span>
+</div>
+<div class="font-stat-mono-lg text-stat-mono-lg text-on-surface font-semibold tracking-tight">206,666</div>
+<div class="mt-2 flex items-center gap-1.5">
+<div class="w-2 h-2 rounded-full bg-secondary"></div>
+<span class="text-secondary font-label-md text-label-md font-semibold">68.8% share</span>
+</div>
+</div>
+<!-- Card 6 -->
+<div class="bg-surface rounded-xl p-space-md shadow-sm flex flex-col justify-between group hover:shadow-md transition-shadow">
+<div class="flex items-center justify-between text-text-muted mb-2">
+<span class="font-label-md text-label-md tracking-wider uppercase">Business Class</span>
+<span class="material-symbols-outlined text-base group-hover:text-primary transition-colors">airline_seat_flat</span>
+</div>
+<div class="font-stat-mono-lg text-stat-mono-lg text-on-surface font-semibold tracking-tight">93,487</div>
+<div class="mt-2 flex items-center gap-1.5">
+<div class="w-2 h-2 rounded-full bg-primary-container"></div>
+<span class="text-primary-container font-label-md text-label-md font-semibold">31.2% share</span>
+</div>
+</div>
+</section>
+<!-- Analytical Visualizations Grid -->
+<section class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg mb-space-xl">
+<!-- Primary Chart: Days Left Trajectory Curve (7 cols) -->
+<div class="lg:col-span-7 bg-surface rounded-xl p-space-lg shadow-sm flex flex-col justify-between">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm mb-space-md">
+<div>
+<div class="flex items-center gap-2">
+<h3 class="font-headline-md text-headline-md text-on-surface">Average Fare Escalation by Days Left</h3>
+<span class="px-2 py-0.5 rounded-full bg-surface-container-high text-primary font-stat-mono-sm text-stat-mono-sm font-semibold">Exponential Drift</span>
+</div>
+<p class="font-body-sm text-body-sm text-text-muted">Mean departure ticket value tracking from T-50 to T-1</p>
+</div>
+<div class="flex items-center gap-2 text-text-muted font-stat-mono-sm text-stat-mono-sm">
+<span class="inline-flex items-center gap-1"><span class="w-3 h-0.5 bg-primary-container rounded"></span> Mean Fare</span>
+<span class="inline-flex items-center gap-1"><span class="w-3 h-2 bg-primary/10 rounded"></span> ±1σ Conf.</span>
+</div>
+</div>
+<!-- SVG Chart Canvas -->
+<div class="w-full h-64 relative flex items-end">
+<svg class="w-full h-full overflow-visible" preserveaspectratio="none" viewbox="0 0 650 220">
+<!-- Background Grid lines -->
+<line class="text-surface-container-high" stroke="currentColor" stroke-dasharray="3 3" x1="50" x2="630" y1="20" y2="20"></line>
+<line class="text-surface-container-high" stroke="currentColor" stroke-dasharray="3 3" x1="50" x2="630" y1="70" y2="70"></line>
+<line class="text-surface-container-high" stroke="currentColor" stroke-dasharray="3 3" x1="50" x2="630" y1="120" y2="120"></line>
+<line class="text-surface-container-high" stroke="currentColor" stroke-dasharray="3 3" x1="50" x2="630" y1="170" y2="170"></line>
+<!-- Y-Axis Values -->
+<text class="fill-text-muted font-stat-mono-sm text-[10px]" text-anchor="end" x="42" y="24">₹20k</text>
+<text class="fill-text-muted font-stat-mono-sm text-[10px]" text-anchor="end" x="42" y="74">₹15k</text>
+<text class="fill-text-muted font-stat-mono-sm text-[10px]" text-anchor="end" x="42" y="124">₹10k</text>
+<text class="fill-text-muted font-stat-mono-sm text-[10px]" text-anchor="end" x="42" y="174">₹5k</text>
+<!-- Confidence interval shaded polygon -->
+<polygon class="fill-primary/10" points="50,178 95,175 145,174 200,172 260,170 320,166 385,158 450,146 515,124 570,85 625,30 625,65 570,115 515,150 450,168 385,178 320,183 260,186 200,188 145,189 95,190 50,192"></polygon>
+<!-- Trajectory Line -->
+<path class="stroke-primary-container" d="M 50 185 Q 260 178 385 168 T 515 137 T 580 92 T 625 45" fill="none" stroke-linecap="round" stroke-width="2.5"></path>
+<!-- Milestone points -->
+<circle class="fill-surface stroke-primary-container" cx="50" cy="185" r="4" stroke-width="2"></circle>
+<circle class="fill-surface stroke-primary-container" cx="260" cy="178" r="3.5" stroke-width="2"></circle>
+<circle class="fill-surface stroke-primary-container" cx="450" cy="157" r="3.5" stroke-width="2"></circle>
+<circle class="fill-surface stroke-primary-container" cx="580" cy="92" r="4" stroke-width="2"></circle>
+<circle class="fill-primary-container stroke-surface" cx="625" cy="45" r="5" stroke-width="2"></circle>
+<!-- High Value Annotations -->
+<g transform="translate(625, 45)">
+<rect class="fill-inverse-surface" height="26" rx="4" width="80" x="-85" y="-36"></rect>
+<text class="fill-inverse-on-surface font-stat-mono-sm text-[11px] font-semibold" text-anchor="middle" x="-45" y="-19">T-1: ₹19,800</text>
+<polygon class="fill-inverse-surface" points="-5,-10 0,0 -10,-10"></polygon>
+</g>
+<g transform="translate(50, 185)">
+<rect class="fill-surface-container-high" height="24" rx="4" width="76" x="5" y="-32"></rect>
+<text class="fill-on-surface font-stat-mono-sm text-[10px] font-medium" text-anchor="middle" x="43" y="-16">T-45: ₹6,500</text>
+</g>
+</svg>
+</div>
+<!-- X-Axis Labels -->
+<div class="flex items-center justify-between pl-12 pr-2 mt-2 pt-2 border-t-0 border-transparent text-text-muted font-stat-mono-sm text-stat-mono-sm">
+<span>50 Days Left</span>
+<span>40 Days</span>
+<span>30 Days</span>
+<span>20 Days</span>
+<span>10 Days</span>
+<span class="text-primary font-semibold">1 Day Left</span>
+</div>
+</div>
+<!-- Secondary Charts (5 cols): Airline Price Comparison & Distribution -->
+<div class="lg:col-span-5 flex flex-col gap-space-lg">
+<!-- Airline Bar Chart -->
+<div class="bg-surface rounded-xl p-space-md shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between mb-space-sm">
+<div>
+<h4 class="font-headline-sm text-headline-sm text-on-surface">Mean Fare by Airline</h4>
+<span class="font-body-sm text-body-sm text-text-muted">Weighted cross-cabin ticket baseline</span>
+</div>
+<span class="font-stat-mono-sm text-stat-mono-sm text-primary font-semibold">Fleet High: UK</span>
+</div>
+<div class="flex flex-col gap-2.5 my-2">
+<!-- Vistara -->
+<div class="flex items-center gap-space-sm">
+<span class="w-16 font-label-md text-label-md text-on-surface font-medium truncate">Vistara</span>
+<div class="flex-1 h-3.5 bg-surface-container-low rounded-full overflow-hidden">
+<div class="h-full bg-primary-container rounded-full" style="width: 100%;"></div>
+</div>
+<span class="w-14 text-right font-stat-mono-sm text-stat-mono-sm text-on-surface font-semibold">₹24,240</span>
+</div>
+<!-- Air India -->
+<div class="flex items-center gap-space-sm">
+<span class="w-16 font-label-md text-label-md text-on-surface font-medium truncate">Air India</span>
+<div class="flex-1 h-3.5 bg-surface-container-low rounded-full overflow-hidden">
+<div class="h-full bg-primary-container/85 rounded-full" style="width: 97%;"></div>
+</div>
+<span class="w-14 text-right font-stat-mono-sm text-stat-mono-sm text-on-surface font-semibold">₹23,510</span>
+</div>
+<!-- IndiGo -->
+<div class="flex items-center gap-space-sm">
+<span class="w-16 font-label-md text-label-md text-on-surface font-medium truncate">IndiGo</span>
+<div class="flex-1 h-3.5 bg-surface-container-low rounded-full overflow-hidden">
+<div class="h-full bg-secondary-container/70 rounded-full" style="width: 65%;"></div>
+</div>
+<span class="w-14 text-right font-stat-mono-sm text-stat-mono-sm text-on-surface font-semibold">₹15,820</span>
+</div>
+<!-- SpiceJet -->
+<div class="flex items-center gap-space-sm">
+<span class="w-16 font-label-md text-label-md text-on-surface font-medium truncate">SpiceJet</span>
+<div class="flex-1 h-3.5 bg-surface-container-low rounded-full overflow-hidden">
+<div class="h-full bg-secondary-container/50 rounded-full" style="width: 58%;"></div>
+</div>
+<span class="w-14 text-right font-stat-mono-sm text-stat-mono-sm text-on-surface font-semibold">₹14,210</span>
+</div>
+<!-- AirAsia -->
+<div class="flex items-center gap-space-sm">
+<span class="w-16 font-label-md text-label-md text-on-surface font-medium truncate">AirAsia</span>
+<div class="flex-1 h-3.5 bg-surface-container-low rounded-full overflow-hidden">
+<div class="h-full bg-secondary-container/40 rounded-full" style="width: 52%;"></div>
+</div>
+<span class="w-14 text-right font-stat-mono-sm text-stat-mono-sm text-on-surface font-semibold">₹12,650</span>
+</div>
+<!-- GO FIRST -->
+<div class="flex items-center gap-space-sm">
+<span class="w-16 font-label-md text-label-md text-on-surface font-medium truncate">GO FIRST</span>
+<div class="flex-1 h-3.5 bg-surface-container-low rounded-full overflow-hidden">
+<div class="h-full bg-secondary-container/35 rounded-full" style="width: 48%;"></div>
+</div>
+<span class="w-14 text-right font-stat-mono-sm text-stat-mono-sm text-on-surface font-semibold">₹11,730</span>
+</div>
+</div>
+</div>
+<!-- Economy vs Business Distribution Density Card -->
+<div class="bg-surface rounded-xl p-space-md shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between mb-2">
+<h4 class="font-headline-sm text-headline-sm text-on-surface">Class Spread Comparison</h4>
+<span class="font-stat-mono-sm text-stat-mono-sm text-text-muted">IQR Density</span>
+</div>
+<div class="grid grid-cols-2 gap-space-md pt-1">
+<!-- Economy Box Stats -->
+<div class="p-3 bg-surface-container-low rounded-lg flex flex-col gap-1">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-on-surface font-semibold">Economy</span>
+<span class="font-stat-mono-sm text-[11px] text-text-muted">68.8%</span>
+</div>
+<div class="font-stat-mono-lg text-stat-mono-lg text-on-surface font-bold">₹6,572</div>
+<div class="flex items-center justify-between text-text-muted font-stat-mono-sm text-[11px] mt-1">
+<span>Q1: ₹4,150</span>
+<span>Q3: ₹8,200</span>
+</div>
+</div>
+<!-- Business Box Stats -->
+<div class="p-3 bg-surface-container-high rounded-lg flex flex-col gap-1">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-primary font-semibold">Business</span>
+<span class="font-stat-mono-sm text-[11px] text-primary">31.2%</span>
+</div>
+<div class="font-stat-mono-lg text-stat-mono-lg text-primary font-bold">₹52,540</div>
+<div class="flex items-center justify-between text-on-surface-variant font-stat-mono-sm text-[11px] mt-1">
+<span>Q1: ₹38,600</span>
+<span>Q3: ₹63,150</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Query & Filtering Bar -->
+<section class="bg-surface rounded-xl p-space-md shadow-sm mb-space-md">
+<div class="flex flex-col gap-space-md">
+<!-- Search Input + Quick Filter Group -->
+<div class="flex flex-col lg:flex-row lg:items-center gap-space-sm justify-between">
+<div class="relative flex-1 max-w-xl">
+<span class="material-symbols-outlined absolute left-3 top-2.5 text-text-muted text-lg">search</span>
+<input class="w-full pl-9 pr-4 py-2 bg-surface-container-low rounded-lg font-body-md text-body-md text-on-surface placeholder:text-text-muted focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all" id="tableSearchInput" placeholder="Search Flight Code, City, Airline (e.g. AI-806, Bangalore, Vistara)..." type="text"/>
+</div>
+<div class="flex items-center gap-space-xs flex-wrap">
+<span class="font-label-md text-label-md text-text-muted mr-1">Active Criteria:</span>
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-surface-container font-label-md text-label-md text-on-surface">
+            Class: All
+            <span class="material-symbols-outlined text-xs cursor-pointer hover:text-danger">close</span>
+</span>
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-surface-container font-label-md text-label-md text-on-surface">
+            Days: 1–50
+            <span class="material-symbols-outlined text-xs cursor-pointer hover:text-danger">close</span>
+</span>
+<button class="px-2.5 py-1 text-primary hover:text-primary/80 font-label-md text-label-md font-semibold transition-colors" id="clearFiltersBtn">
+            Reset Filters
+          </button>
+</div>
+</div>
+<!-- Extended Filter Dropdown Controls -->
+<div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-space-sm pt-2">
+<!-- Airline Filter -->
+<div class="flex flex-col gap-1">
+<label class="font-label-md text-label-md text-text-muted">Airline</label>
+<select class="w-full py-1.5 px-2 bg-surface-container-low rounded-md font-body-sm text-body-sm text-on-surface focus:outline-none focus:ring-1 focus:ring-primary" id="filterAirline">
+<option value="all">All Carriers (6)</option>
+<option value="Air India">Air India</option>
+<option value="Vistara">Vistara</option>
+<option value="IndiGo">IndiGo</option>
+<option value="SpiceJet">SpiceJet</option>
+<option value="AirAsia">AirAsia</option>
+<option value="GO FIRST">GO FIRST</option>
+</select>
+</div>
+<!-- Source City -->
+<div class="flex flex-col gap-1">
+<label class="font-label-md text-label-md text-text-muted">Source Hub</label>
+<select class="w-full py-1.5 px-2 bg-surface-container-low rounded-md font-body-sm text-body-sm text-on-surface focus:outline-none focus:ring-1 focus:ring-primary" id="filterSource">
+<option value="all">All Source Cities (6)</option>
+<option value="Delhi">Delhi (DEL)</option>
+<option value="Mumbai">Mumbai (BOM)</option>
+<option value="Bangalore">Bangalore (BLR)</option>
+<option value="Kolkata">Kolkata (CCU)</option>
+<option value="Hyderabad">Hyderabad (HYD)</option>
+<option value="Chennai">Chennai (MAA)</option>
+</select>
+</div>
+<!-- Destination City -->
+<div class="flex flex-col gap-1">
+<label class="font-label-md text-label-md text-text-muted">Destination Hub</label>
+<select class="w-full py-1.5 px-2 bg-surface-container-low rounded-md font-body-sm text-body-sm text-on-surface focus:outline-none focus:ring-1 focus:ring-primary" id="filterDest">
+<option value="all">All Destination Hubs</option>
+<option value="Mumbai">Mumbai (BOM)</option>
+<option value="Delhi">Delhi (DEL)</option>
+<option value="Bangalore">Bangalore (BLR)</option>
+<option value="Chennai">Chennai (MAA)</option>
+<option value="Hyderabad">Hyderabad (HYD)</option>
+<option value="Kolkata">Kolkata (CCU)</option>
+</select>
+</div>
+<!-- Cabin Class -->
+<div class="flex flex-col gap-1">
+<label class="font-label-md text-label-md text-text-muted">Cabin Class</label>
+<select class="w-full py-1.5 px-2 bg-surface-container-low rounded-md font-body-sm text-body-sm text-on-surface focus:outline-none focus:ring-1 focus:ring-primary" id="filterClass">
+<option value="all">Economy + Business</option>
+<option value="Economy">Economy</option>
+<option value="Business">Business</option>
+</select>
+</div>
+<!-- Days Left Window -->
+<div class="flex flex-col gap-1">
+<label class="font-label-md text-label-md text-text-muted">Days to Departure</label>
+<select class="w-full py-1.5 px-2 bg-surface-container-low rounded-md font-body-sm text-body-sm text-on-surface focus:outline-none focus:ring-1 focus:ring-primary" id="filterDays">
+<option value="all">1 – 50 Days</option>
+<option value="urgent">1 – 3 Days (Peak Surge)</option>
+<option value="mid">4 – 20 Days</option>
+<option value="advance">21 – 50 Days (Advance)</option>
+</select>
+</div>
+<!-- Price Range -->
+<div class="flex flex-col gap-1">
+<label class="font-label-md text-label-md text-text-muted">Price Bracket</label>
+<select class="w-full py-1.5 px-2 bg-surface-container-low rounded-md font-body-sm text-body-sm text-on-surface focus:outline-none focus:ring-1 focus:ring-primary" id="filterPrice">
+<option value="all">All Fares (₹1k - ₹120k)</option>
+<option value="budget">&lt; ₹5,000</option>
+<option value="standard">₹5,000 – ₹15,000</option>
+<option value="premium">₹15,000 – ₹45,000</option>
+<option value="luxury">&gt; ₹45,000</option>
+</select>
+</div>
+</div>
+</div>
+</section>
+<!-- Filterable Data Table -->
+<section class="bg-surface rounded-xl shadow-sm overflow-hidden flex flex-col mb-space-lg">
+<div class="overflow-x-auto w-full">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low text-text-muted font-label-md text-label-md uppercase tracking-wider">
+<th class="py-3 px-space-md font-semibold">Airline</th>
+<th class="py-3 px-space-sm font-semibold">Code</th>
+<th class="py-3 px-space-sm font-semibold">Source</th>
+<th class="py-3 px-space-sm font-semibold">Destination</th>
+<th class="py-3 px-space-sm font-semibold">Class</th>
+<th class="py-3 px-space-sm font-semibold">Dep. Time</th>
+<th class="py-3 px-space-sm font-semibold">Arr. Time</th>
+<th class="py-3 px-space-sm font-semibold">Stops</th>
+<th class="py-3 px-space-sm font-semibold">Duration</th>
+<th class="py-3 px-space-sm font-semibold text-center">Days Left</th>
+<th class="py-3 px-space-md font-semibold text-right">Fare (₹)</th>
+</tr>
+</thead>
+<tbody class="font-body-md text-body-md text-on-surface divide-y-0" id="flightTableBody">
+<!-- Row 1 -->
+<tr class="hover:bg-surface-container-low/60 transition-colors">
+<td class="py-3 px-space-md">
+<div class="flex items-center gap-2">
+<span class="w-6 h-6 rounded-full bg-primary/10 text-primary flex items-center justify-center font-bold text-xs">UK</span>
+<span class="font-medium text-on-surface">Vistara</span>
+</div>
+</td>
+<td class="py-3 px-space-sm font-stat-mono-sm text-stat-mono-sm text-text-muted">UK-814</td>
+<td class="py-3 px-space-sm font-medium">Delhi</td>
+<td class="py-3 px-space-sm font-medium">Mumbai</td>
+<td class="py-3 px-space-sm">
+<span class="px-2 py-0.5 rounded-full bg-primary-fixed text-on-primary-fixed font-stat-mono-sm text-[11px] font-semibold">Business</span>
+</td>
+<td class="py-3 px-space-sm text-text-muted font-stat-mono-sm text-stat-mono-sm">18:45</td>
+<td class="py-3 px-space-sm text-text-muted font-stat-mono-sm text-stat-mono-sm">21:05</td>
+<td class="py-3 px-space-sm text-text-muted">Non-stop</td>
+<td class="py-3 px-space-sm font-stat-mono-sm text-stat-mono-sm text-text-muted">2h 20m</td>
+<td class="py-3 px-space-sm text-center">
+<span class="inline-block px-2 py-0.5 rounded bg-error-container text-on-error-container font-stat-mono-sm text-stat-mono-sm font-semibold">1 day</span>
+</td>
+<td class="py-3 px-space-md text-right font-stat-mono-sm text-stat-mono-sm text-on-surface font-bold">₹61,420</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-surface-container-low/60 transition-colors">
+<td class="py-3 px-space-md">
+<div class="flex items-center gap-2">
+<span class="w-6 h-6 rounded-full bg-danger/10 text-danger flex items-center justify-center font-bold text-xs">AI</span>
+<span class="font-medium text-on-surface">Air India</span>
+</div>
+</td>
+<td class="py-3 px-space-sm font-stat-mono-sm text-stat-mono-sm text-text-muted">AI-505</td>
+<td class="py-3 px-space-sm font-medium">Bangalore</td>
+<td class="py-3 px-space-sm font-medium">Delhi</td>
+<td class="py-3 px-space-sm">
+<span class="px-2 py-0.5 rounded-full bg-secondary-fixed text-on-secondary-fixed font-stat-mono-sm text-[11px] font-semibold">Economy</span>
+</td>
+<td class="py-3 px-space-sm text-text-muted font-stat-mono-sm text-stat-mono-sm">06:10</td>
+<td class="py-3 px-space-sm text-text-muted font-stat-mono-sm text-stat-mono-sm">09:00</td>
+<td class="py-3 px-space-sm text-text-muted">Non-stop</td>
+<td class="py-3 px-space-sm font-stat-mono-sm text-stat-mono-sm text-text-muted">2h 50m</td>
+<td class="py-3 px-space-sm text-center">
+<span class="inline-block px-2 py-0.5 rounded bg-surface-container-high text-on-surface font-stat-mono-sm text-stat-mono-sm">34 days</span>
+</td>
+<td class="py-3 px-space-md text-right font-stat-mono-sm text-stat-mono-sm text-on-surface font-bold">₹5,980</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface-container-low/60 transition-colors">
+<td class="py-3 px-space-md">
+<div class="flex items-center gap-2">
+<span class="w-6 h-6 rounded-full bg-secondary/10 text-secondary flex items-center justify-center font-bold text-xs">6E</span>
+<span class="font-medium text-on-surface">IndiGo</span>
+</div>
+</td>
+<td class="py-3 px-space-sm font-stat-mono-sm text-stat-mono-sm text-text-muted">6E-2012</td>
+<td class="py-3 px-space-sm font-medium">Mumbai</td>
+<td class="py-3 px-space-sm font-medium">Chennai</td>
+<td class="py-3 px-space-sm">
+<span class="px-2 py-0.5 rounded-full bg-secondary-fixed text-on-secondary-fixed font-stat-mono-sm text-[11px] font-semibold">Economy</span>
+</td>
+<td class="py-3 px-space-sm text-text-muted font-stat-mono-sm text-stat-mono-sm">11:15</td>
+<td class="py-3 px-space-sm text-text-muted font-stat-mono-sm text-stat-mono-sm">13:10</td>
+<td class="py-3 px-space-sm text-text-muted">Non-stop</td>
+<td class="py-3 px-space-sm font-stat-mono-sm text-stat-mono-sm text-text-muted">1h 55m</td>
+<td class="py-3 px-space-sm text-center">
+<span class="inline-block px-2 py-0.5 rounded bg-surface-container-high text-on-surface font-stat-mono-sm text-stat-mono-sm">18 days</span>
+</td>
+<td class="py-3 px-space-md text-right font-stat-mono-sm text-stat-mono-sm text-on-surface font-bold">₹4,235</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-surface-container-low/60 transition-colors">
+<td class="py-3 px-space-md">
+<div class="flex items-center gap-2">
+<span class="w-6 h-6 rounded-full bg-tertiary-container/10 text-tertiary-container flex items-center justify-center font-bold text-xs">SG</span>
+<span class="font-medium text-on-surface">SpiceJet</span>
+</div>
+</td>
+<td class="py-3 px-space-sm font-stat-mono-sm text-stat-mono-sm text-text-muted">SG-142</td>
+<td class="py-3 px-space-sm font-medium">Kolkata</td>
+<td class="py-3 px-space-sm font-medium">Delhi</td>
+<td class="py-3 px-space-sm">
+<span class="px-2 py-0.5 rounded-full bg-secondary-fixed text-on-secondary-fixed font-stat-mono-sm text-[11px] font-semibold">Economy</span>
+</td>
+<td class="py-3 px-space-sm text-text-muted font-stat-mono-sm text-stat-mono-sm">07:30</td>
+<td class="py-3 px-space-sm text-text-muted font-stat-mono-sm text-stat-mono-sm">10:05</td>
+<td class="py-3 px-space-sm text-text-muted">Non-stop</td>
+<td class="py-3 px-space-sm font-stat-mono-sm text-stat-mono-sm text-text-muted">2h 35m</td>
+<td class="py-3 px-space-sm text-center">
+<span class="inline-block px-2 py-0.5 rounded bg-surface-container-high text-on-surface font-stat-mono-sm text-stat-mono-sm">48 days</span>
+</td>
+<td class="py-3 px-space-md text-right font-stat-mono-sm text-stat-mono-sm text-on-surface font-bold">₹3,890</td>
+</tr>
+<!-- Row 5 -->
+<tr class="hover:bg-surface-container-low/60 transition-colors">
+<td class="py-3 px-space-md">
+<div class="flex items-center gap-2">
+<span class="w-6 h-6 rounded-full bg-primary/10 text-primary flex items-center justify-center font-bold text-xs">UK</span>
+<span class="font-medium text-on-surface">Vistara</span>
+</div>
+</td>
+<td class="py-3 px-space-sm font-stat-mono-sm text-stat-mono-sm text-text-muted">UK-897</td>
+<td class="py-3 px-space-sm font-medium">Delhi</td>
+<td class="py-3 px-space-sm font-medium">Hyderabad</td>
+<td class="py-3 px-space-sm">
+<span class="px-2 py-0.5 rounded-full bg-primary-fixed text-on-primary-fixed font-stat-mono-sm text-[11px] font-semibold">Business</span>
+</td>
+<td class="py-3 px-space-sm text-text-muted font-stat-mono-sm text-stat-mono-sm">14:10</td>
+<td class="py-3 px-space-sm text-text-muted font-stat-mono-sm text-stat-mono-sm">16:20</td>
+<td class="py-3 px-space-sm text-text-muted">Non-stop</td>
+<td class="py-3 px-space-sm font-stat-mono-sm text-stat-mono-sm text-text-muted">2h 10m</td>
+<td class="py-3 px-space-sm text-center">
+<span class="inline-block px-2 py-0.5 rounded bg-surface-container-high text-on-surface font-stat-mono-sm text-stat-mono-sm">22 days</span>
+</td>
+<td class="py-3 px-space-md text-right font-stat-mono-sm text-stat-mono-sm text-on-surface font-bold">₹44,220</td>
+</tr>
+<!-- Row 6 -->
+<tr class="hover:bg-surface-container-low/60 transition-colors">
+<td class="py-3 px-space-md">
+<div class="flex items-center gap-2">
+<span class="w-6 h-6 rounded-full bg-danger/10 text-danger flex items-center justify-center font-bold text-xs">AI</span>
+<span class="font-medium text-on-surface">Air India</span>
+</div>
+</td>
+<td class="py-3 px-space-sm font-stat-mono-sm text-stat-mono-sm text-text-muted">AI-665</td>
+<td class="py-3 px-space-sm font-medium">Hyderabad</td>
+<td class="py-3 px-space-sm font-medium">Mumbai</td>
+<td class="py-3 px-space-sm">
+<span class="px-2 py-0.5 rounded-full bg-secondary-fixed text-on-secondary-fixed font-stat-mono-sm text-[11px] font-semibold">Economy</span>
+</td>
+<td class="py-3 px-space-sm text-text-muted font-stat-mono-sm text-stat-mono-sm">20:15</td>
+<td class="py-3 px-space-sm text-text-muted font-stat-mono-sm text-stat-mono-sm">21:45</td>
+<td class="py-3 px-space-sm text-text-muted">Non-stop</td>
+<td class="py-3 px-space-sm font-stat-mono-sm text-stat-mono-sm text-text-muted">1h 30m</td>
+<td class="py-3 px-space-sm text-center">
+<span class="inline-block px-2 py-0.5 rounded bg-warning/20 text-warning font-stat-mono-sm text-stat-mono-sm font-semibold">2 days</span>
+</td>
+<td class="py-3 px-space-md text-right font-stat-mono-sm text-stat-mono-sm text-on-surface font-bold">₹11,450</td>
+</tr>
+<!-- Row 7 -->
+<tr class="hover:bg-surface-container-low/60 transition-colors">
+<td class="py-3 px-space-md">
+<div class="flex items-center gap-2">
+<span class="w-6 h-6 rounded-full bg-primary-fixed text-on-primary-fixed flex items-center justify-center font-bold text-xs">I5</span>
+<span class="font-medium text-on-surface">AirAsia</span>
+</div>
+</td>
+<td class="py-3 px-space-sm font-stat-mono-sm text-stat-mono-sm text-text-muted">I5-741</td>
+<td class="py-3 px-space-sm font-medium">Bangalore</td>
+<td class="py-3 px-space-sm font-medium">Kolkata</td>
+<td class="py-3 px-space-sm">
+<span class="px-2 py-0.5 rounded-full bg-secondary-fixed text-on-secondary-fixed font-stat-mono-sm text-[11px] font-semibold">Economy</span>
+</td>
+<td class="py-3 px-space-sm text-text-muted font-stat-mono-sm text-stat-mono-sm">05:40</td>
+<td class="py-3 px-space-sm text-text-muted font-stat-mono-sm text-stat-mono-sm">08:15</td>
+<td class="py-3 px-space-sm text-text-muted">Non-stop</td>
+<td class="py-3 px-space-sm font-stat-mono-sm text-stat-mono-sm text-text-muted">2h 35m</td>
+<td class="py-3 px-space-sm text-center">
+<span class="inline-block px-2 py-0.5 rounded bg-surface-container-high text-on-surface font-stat-mono-sm text-stat-mono-sm">12 days</span>
+</td>
+<td class="py-3 px-space-md text-right font-stat-mono-sm text-stat-mono-sm text-on-surface font-bold">₹5,410</td>
+</tr>
+<!-- Row 8 -->
+<tr class="hover:bg-surface-container-low/60 transition-colors">
+<td class="py-3 px-space-md">
+<div class="flex items-center gap-2">
+<span class="w-6 h-6 rounded-full bg-tertiary/10 text-tertiary flex items-center justify-center font-bold text-xs">G8</span>
+<span class="font-medium text-on-surface">GO FIRST</span>
+</div>
+</td>
+<td class="py-3 px-space-sm font-stat-mono-sm text-stat-mono-sm text-text-muted">G8-332</td>
+<td class="py-3 px-space-sm font-medium">Chennai</td>
+<td class="py-3 px-space-sm font-medium">Delhi</td>
+<td class="py-3 px-space-sm">
+<span class="px-2 py-0.5 rounded-full bg-secondary-fixed text-on-secondary-fixed font-stat-mono-sm text-[11px] font-semibold">Economy</span>
+</td>
+<td class="py-3 px-space-sm text-text-muted font-stat-mono-sm text-stat-mono-sm">16:00</td>
+<td class="py-3 px-space-sm text-text-muted font-stat-mono-sm text-stat-mono-sm">18:45</td>
+<td class="py-3 px-space-sm text-text-muted">Non-stop</td>
+<td class="py-3 px-space-sm font-stat-mono-sm text-stat-mono-sm text-text-muted">2h 45m</td>
+<td class="py-3 px-space-sm text-center">
+<span class="inline-block px-2 py-0.5 rounded bg-surface-container-high text-on-surface font-stat-mono-sm text-stat-mono-sm">29 days</span>
+</td>
+<td class="py-3 px-space-md text-right font-stat-mono-sm text-stat-mono-sm text-on-surface font-bold">₹4,780</td>
+</tr>
+<!-- Row 9 -->
+<tr class="hover:bg-surface-container-low/60 transition-colors">
+<td class="py-3 px-space-md">
+<div class="flex items-center gap-2">
+<span class="w-6 h-6 rounded-full bg-primary/10 text-primary flex items-center justify-center font-bold text-xs">UK</span>
+<span class="font-medium text-on-surface">Vistara</span>
+</div>
+</td>
+<td class="py-3 px-space-sm font-stat-mono-sm text-stat-mono-sm text-text-muted">UK-930</td>
+<td class="py-3 px-space-sm font-medium">Mumbai</td>
+<td class="py-3 px-space-sm font-medium">Delhi</td>
+<td class="py-3 px-space-sm">
+<span class="px-2 py-0.5 rounded-full bg-primary-fixed text-on-primary-fixed font-stat-mono-sm text-[11px] font-semibold">Business</span>
+</td>
+<td class="py-3 px-space-sm text-text-muted font-stat-mono-sm text-stat-mono-sm">07:00</td>
+<td class="py-3 px-space-sm text-text-muted font-stat-mono-sm text-stat-mono-sm">09:15</td>
+<td class="py-3 px-space-sm text-text-muted">Non-stop</td>
+<td class="py-3 px-space-sm font-stat-mono-sm text-stat-mono-sm text-text-muted">2h 15m</td>
+<td class="py-3 px-space-sm text-center">
+<span class="inline-block px-2 py-0.5 rounded bg-surface-container-high text-on-surface font-stat-mono-sm text-stat-mono-sm">7 days</span>
+</td>
+<td class="py-3 px-space-md text-right font-stat-mono-sm text-stat-mono-sm text-on-surface font-bold">₹54,190</td>
+</tr>
+<!-- Row 10 -->
+<tr class="hover:bg-surface-container-low/60 transition-colors">
+<td class="py-3 px-space-md">
+<div class="flex items-center gap-2">
+<span class="w-6 h-6 rounded-full bg-secondary/10 text-secondary flex items-center justify-center font-bold text-xs">6E</span>
+<span class="font-medium text-on-surface">IndiGo</span>
+</div>
+</td>
+<td class="py-3 px-space-sm font-stat-mono-sm text-stat-mono-sm text-text-muted">6E-5341</td>
+<td class="py-3 px-space-sm font-medium">Delhi</td>
+<td class="py-3 px-space-sm font-medium">Bangalore</td>
+<td class="py-3 px-space-sm">
+<span class="px-2 py-0.5 rounded-full bg-secondary-fixed text-on-secondary-fixed font-stat-mono-sm text-[11px] font-semibold">Economy</span>
+</td>
+<td class="py-3 px-space-sm text-text-muted font-stat-mono-sm text-stat-mono-sm">21:20</td>
+<td class="py-3 px-space-sm text-text-muted font-stat-mono-sm text-stat-mono-sm">00:05</td>
+<td class="py-3 px-space-sm text-text-muted">Non-stop</td>
+<td class="py-3 px-space-sm font-stat-mono-sm text-stat-mono-sm text-text-muted">2h 45m</td>
+<td class="py-3 px-space-sm text-center">
+<span class="inline-block px-2 py-0.5 rounded bg-surface-container-high text-on-surface font-stat-mono-sm text-stat-mono-sm">41 days</span>
+</td>
+<td class="py-3 px-space-md text-right font-stat-mono-sm text-stat-mono-sm text-on-surface font-bold">₹3,950</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Table Pagination Footer -->
+<div class="p-space-md bg-surface border-t-0 flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm">
+<div class="flex items-center gap-2">
+<span class="font-stat-mono-sm text-stat-mono-sm text-text-muted">Showing</span>
+<span class="font-stat-mono-sm text-stat-mono-sm text-on-surface font-semibold">1 – 10</span>
+<span class="font-stat-mono-sm text-stat-mono-sm text-text-muted">of</span>
+<span class="font-stat-mono-sm text-stat-mono-sm text-on-surface font-semibold">300,153</span>
+<span class="font-stat-mono-sm text-stat-mono-sm text-text-muted">flight records</span>
+</div>
+<div class="flex items-center gap-1.5 self-end sm:self-auto">
+<button class="p-1.5 rounded-lg bg-surface-container-low text-text-muted hover:text-on-surface disabled:opacity-40 transition-colors" disabled="">
+<span class="material-symbols-outlined text-lg">chevron_left</span>
+</button>
+<button class="w-8 h-8 rounded-lg bg-primary-container text-on-primary font-stat-mono-sm text-stat-mono-sm font-semibold flex items-center justify-center shadow-sm">1</button>
+<button class="w-8 h-8 rounded-lg bg-surface-container-low text-on-surface hover:bg-surface-container font-stat-mono-sm text-stat-mono-sm font-medium flex items-center justify-center transition-colors">2</button>
+<button class="w-8 h-8 rounded-lg bg-surface-container-low text-on-surface hover:bg-surface-container font-stat-mono-sm text-stat-mono-sm font-medium flex items-center justify-center transition-colors">3</button>
+<span class="px-1 text-text-muted font-stat-mono-sm text-stat-mono-sm">...</span>
+<button class="px-2.5 h-8 rounded-lg bg-surface-container-low text-on-surface hover:bg-surface-container font-stat-mono-sm text-stat-mono-sm font-medium flex items-center justify-center transition-colors">30,016</button>
+<button class="p-1.5 rounded-lg bg-surface-container-low text-on-surface hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-lg">chevron_right</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Dataset Integrity & Metadata Panel -->
+<section class="grid grid-cols-1 md:grid-cols-3 gap-space-md">
+<div class="p-space-md bg-surface rounded-xl shadow-sm flex items-start gap-space-sm">
+<div class="p-2 rounded-lg bg-success/10 text-success">
+<span class="material-symbols-outlined text-xl">verified</span>
+</div>
+<div>
+<h5 class="font-headline-sm text-headline-sm text-on-surface">Cleaned &amp; Normalized</h5>
+<p class="font-body-sm text-body-sm text-text-muted mt-0.5">0 null fare entries, duration transformed into uniform integer minutes for simulation pipelines.</p>
+</div>
+</div>
+<div class="p-space-md bg-surface rounded-xl shadow-sm flex items-start gap-space-sm">
+<div class="p-2 rounded-lg bg-primary/10 text-primary">
+<span class="material-symbols-outlined text-xl">auto_graph</span>
+</div>
+<div>
+<h5 class="font-headline-sm text-headline-sm text-on-surface">Continuous Pricing Model</h5>
+<p class="font-body-sm text-body-sm text-text-muted mt-0.5">Captures dynamic volatility surge: exponential jump observed between T-3 and departure date.</p>
+</div>
+</div>
+<div class="p-space-md bg-surface rounded-xl shadow-sm flex items-start gap-space-sm">
+<div class="p-2 rounded-lg bg-secondary/10 text-secondary">
+<span class="material-symbols-outlined text-xl">schema</span>
+</div>
+<div>
+<h5 class="font-headline-sm text-headline-sm text-on-surface">Ready for Monte Carlo</h5>
+<p class="font-body-sm text-body-sm text-text-muted mt-0.5">Directly connected to the Brownian Motion and Jump-Diffusion stochastic simulation kernel.</p>
+</div>
+</div>
+</section>
+</div>
+<script>
+  // Simple Table Search Filter Simulation
+  const searchInput = document.getElementById('tableSearchInput');
+  const tableBody = document.getElementById('flightTableBody');
+  const clearBtn = document.getElementById('clearFiltersBtn');
+  const exportBtn = document.getElementById('exportBtn');
+
+  if (searchInput && tableBody) {
+    searchInput.addEventListener('keyup', function(e) {
+      const term = e.target.value.toLowerCase().trim();
+      const rows = tableBody.querySelectorAll('tr');
+      rows.forEach(row => {
+        const text = row.innerText.toLowerCase();
+        row.style.display = text.includes(term) ? '' : 'none';
+      });
+    });
+  }
+
+  if (clearBtn) {
+    clearBtn.addEventListener('click', function() {
+      if (searchInput) searchInput.value = '';
+      const rows = tableBody.querySelectorAll('tr');
+      rows.forEach(row => row.style.display = '');
+      const selects = document.querySelectorAll('select');
+      selects.forEach(sel => sel.selectedIndex = 0);
+    });
+  }
+
+  if (exportBtn) {
+    exportBtn.addEventListener('click', function() {
+      const originalText = exportBtn.innerHTML;
+      exportBtn.innerHTML = '<span class="material-symbols-outlined text-lg animate-spin">progress_activity</span><span class="font-label-lg text-label-lg font-semibold">Generating CSV...</span>';
+      setTimeout(() => {
+        exportBtn.innerHTML = originalText;
+        alert('CSV Export generated: 300,153 filtered records ready for download.');
+      }, 900);
+    });
+  }
+</script></main></div></body></html>
