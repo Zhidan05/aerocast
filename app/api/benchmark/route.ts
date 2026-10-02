@@ -10,7 +10,7 @@ export async function POST(request: Request) {
     const destinationCity = typeof body.destinationCity === 'string' ? body.destinationCity.trim() : '';
     const flightClass = typeof body.flightClass === 'string' ? body.flightClass.trim() : '';
     const daysLeft = Number(body.daysLeft);
-    const tolerance = Number(body.tolerance);
+    const daysTolerance = Number(body.daysTolerance || body.tolerance);
     const calibrationRatio = Number(body.calibrationRatio);
     const splitSeed = Number(body.splitSeed);
     const monteCarloSeed = Number(body.monteCarloSeed);
@@ -22,7 +22,7 @@ export async function POST(request: Request) {
     if (isNaN(daysLeft) || daysLeft < 1 || daysLeft > 49) {
       return NextResponse.json({ error: 'Days left must be between 1 and 49' }, { status: 400 });
     }
-    if (isNaN(tolerance) || tolerance < 0 || tolerance > 10) {
+    if (isNaN(daysTolerance) || daysTolerance < 0 || daysTolerance > 10) {
       return NextResponse.json({ error: 'Tolerance must be between 0 and 10' }, { status: 400 });
     }
     if (isNaN(calibrationRatio) || calibrationRatio < 0.1 || calibrationRatio > 0.9) {
@@ -40,7 +40,7 @@ export async function POST(request: Request) {
       destinationCity,
       flightClass,
       daysLeft,
-      tolerance
+      daysTolerance
     })) as { id: string; price: number; days_left: number; airline: string; }[];
 
     if (subsetData.length < 50) {
@@ -55,7 +55,7 @@ export async function POST(request: Request) {
       destinationCity,
       flightClass,
       daysLeft,
-      tolerance,
+      daysTolerance,
       calibrationRatio,
       splitSeed,
       monteCarloSeed,

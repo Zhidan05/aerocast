@@ -70,7 +70,7 @@ export async function POST(req: Request) {
       destinationCity,
       flightClass,
       daysLeft,
-      tolerance
+      daysTolerance: tolerance
     });
 
     if (!subset || subset.length < 50) {

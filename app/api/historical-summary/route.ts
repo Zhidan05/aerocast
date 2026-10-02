@@ -20,7 +20,7 @@ export async function POST(request: Request) {
       destinationCity,
       flightClass,
       daysLeft,
-      tolerance
+      daysTolerance: tolerance
     })) as { price: number; days_left: number; airline: string; }[];
 
     const count = subsetData.length;

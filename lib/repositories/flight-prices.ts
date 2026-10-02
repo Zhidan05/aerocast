@@ -160,11 +160,11 @@ export async function getFlightPrices(options: FlightPricesQueryOptions = {}) {
   return { data: data as FlightPrice[], count: count || 0 };
 }
 
-export async function getHistoricalSubset(options: { sourceCity: string; destinationCity: string; flightClass: string; daysLeft: number; tolerance: number; }) {
+export async function getHistoricalSubset(options: { sourceCity: string; destinationCity: string; flightClass: string; daysLeft: number; daysTolerance: number; }) {
   // Unchanged for now as Monte Carlo is not implemented yet
   const supabase = createServerClient();
-  const minDays = Math.max(0, options.daysLeft - options.tolerance);
-  const maxDays = options.daysLeft + options.tolerance;
+  const minDays = Math.max(0, options.daysLeft - options.daysTolerance);
+  const maxDays = options.daysLeft + options.daysTolerance;
 
   const { data, error } = await supabase
     .from('flight_prices')

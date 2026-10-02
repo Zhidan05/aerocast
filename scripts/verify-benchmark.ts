@@ -39,7 +39,7 @@ async function verifyBenchmark() {
     destinationCity: 'Hyderabad',
     flightClass: 'Business',
     daysLeft: 10,
-    tolerance: 1,
+    daysTolerance: 1,
     calibrationRatio: 0.8,
     splitSeed: 2026,
     monteCarloSeed: 123456,

@@ -72,8 +72,8 @@ export function BenchmarkForm({
             <input 
               type="number" 
               className="mt-1 block w-full rounded-md border-slate-300 shadow-sm text-sm" 
-              value={params.tolerance}
-              onChange={e => setParams({...params, tolerance: Number(e.target.value)})}
+              value={params.daysTolerance}
+              onChange={e => setParams({...params, daysTolerance: Number(e.target.value)})}
               min="0" max="10" required
             />
           </label>
