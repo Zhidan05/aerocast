@@ -2,8 +2,8 @@ import type { Metadata } from 'next';
 import { BenchmarkPageClient } from './page-client';
 
 export const metadata: Metadata = {
-  title: 'Model Benchmarking | AeroCast',
-  description: 'Evaluate and compare AeroCast prediction models against naive baselines.',
+  title: 'Benchmarking Model | AeroCast',
+  description: 'Evaluasi dan bandingkan model prediksi AeroCast dengan baseline naif.',
 };
 
 export default function BenchmarkPage() {

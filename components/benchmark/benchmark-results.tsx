@@ -25,30 +25,30 @@ export function BenchmarkResults({ result }: { result: BenchmarkResult }) {
       <div className="flex flex-wrap items-center justify-between gap-3 bg-blue-50/50 p-4 rounded-lg border border-blue-100">
         <div className="flex items-center gap-2 text-sm text-blue-800">
           <CheckCircle2 size={16} />
-          <span>Evaluation Complete: <strong>{result.dataSplit.evaluationCount}</strong> test observations</span>
+          <span>Evaluasi Selesai: <strong>{result.dataSplit.evaluationCount}</strong> observasi pengujian</span>
         </div>
         <div className="text-xs text-slate-500 font-mono">
-          Calibration: {result.dataSplit.calibrationCount} rows
+          Kalibrasi: {result.dataSplit.calibrationCount} baris
         </div>
       </div>
 
       <Card>
         <CardHeader 
-          title="Baseline Comparison" 
-          description="Direct comparison of prediction metrics across methodologies. Lower error (MAE, MAPE, RMSE) is better."
+          title="Perbandingan Baseline" 
+          description="Perbandingan langsung dari metrik prediksi di seluruh metodologi. Kesalahan yang lebih rendah (MAE, MAPE, RMSE) lebih baik."
           icon={ChartNoAxesCombined} 
         />
-        <DataTable label="Benchmark Results">
+        <DataTable label="Hasil Benchmark">
           <thead>
             <tr>
-              <th>Method</th>
-              <th>Expected Price</th>
+              <th>Metode</th>
+              <th>Estimasi Harga</th>
               <th>MAE</th>
               <th>MAPE</th>
               <th>RMSE</th>
               <th>Bias</th>
-              <th>Coverage</th>
-              <th>Interval Width</th>
+              <th>Cakupan</th>
+              <th>Lebar Interval</th>
             </tr>
           </thead>
           <tbody>
@@ -67,8 +67,8 @@ export function BenchmarkResults({ result }: { result: BenchmarkResult }) {
           </tbody>
         </DataTable>
         <div className="table-footer flex justify-between">
-          <span>* Bias = Expected - Actual</span>
-          <span>N/A indicates metric is not applicable for deterministic baselines.</span>
+          <span>* Bias = Estimasi - Aktual</span>
+          <span>N/A menunjukkan metrik tidak berlaku untuk baseline deterministik.</span>
         </div>
       </Card>
       

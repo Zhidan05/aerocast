@@ -4,7 +4,7 @@ import { defaultParameters } from "@/lib/mock-data/dashboard";
 import { validateSimulationParameters } from "@/lib/mock-data/monte-carlo";
 import type { SimulationParameters } from "@/lib/types";
 
-export const metadata: Metadata = { title: "Monte Carlo Simulation" };
+export const metadata: Metadata = { title: "Simulasi Monte Carlo" };
 
 export default async function MonteCarloPage({ searchParams }: {
   searchParams: Promise<Record<string, string | string[] | undefined>>;

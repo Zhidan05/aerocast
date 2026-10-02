@@ -70,11 +70,11 @@ export function DatasetExplorer({ summary, uniqueFilters, flights, chartData, cu
 
   function exportRows() {
     const columns = ["airline", "flight", "source_city", "destination_city", "class", "departure_time", "arrival_time", "stops", "duration", "days_left", "price"];
-    const csv = ["Airline,Flight,Source,Destination,Class,Departure,Arrival,Stops,Duration (hours),Days Left,Price (INR)", 
+    const csv = ["Maskapai,Penerbangan,Kota Asal,Kota Tujuan,Kelas,Keberangkatan,Kedatangan,Transit,Durasi (jam),Hari Tersisa,Harga (INR)", 
       ...flights.data.map((row) => columns.map((key) => `"${String(row[key as keyof FlightPrice] || '').replaceAll('"', '""')}"`).join(","))
     ].join("\r\n");
     downloadFile("aerocast-flight-preview.csv", `\uFEFF${csv}`, "text/csv;charset=utf-8;");
-    setNotice(`Exported ${flights.data.length} current page records.`);
+    setNotice(`Mengekspor ${flights.data.length} data halaman ini.`);
   }
 
   function sortHeading(label: string, field: string) {
@@ -85,60 +85,60 @@ export function DatasetExplorer({ summary, uniqueFilters, flights, chartData, cu
 
   return (
     <div className="page-stack [&_.card-header]:p-0">
-      <PageHeader eyebrow="THE DATA BEHIND THE FORECAST" title="Dataset Explorer" description="Inspect historical fares, uncover pricing patterns, and explore the data behind every simulation." actions={<button className="button button-primary" onClick={exportRows} disabled={flights.data.length === 0}><Download size={16} /> Export current page</button>} />
+      <PageHeader eyebrow="DATA DI BALIK PREDIKSI" title="Penjelajah Dataset" description="Periksa harga historis, temukan pola harga, dan jelajahi data di balik setiap simulasi." actions={<button className="button button-primary" onClick={exportRows} disabled={flights.data.length === 0}><Download size={16} /> Ekspor halaman ini</button>} />
       
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-6">
-        <StatCard label="Total records" value={summary.total_records?.toLocaleString("en-US") || "0"} helper="Reference corpus" icon={Database} />
-        <StatCard label="Airlines" value={summary.airlines?.toLocaleString("en-US") || "0"} helper="Domestic carriers" icon={Plane} tone="indigo" />
-        <StatCard label="Cities" value={summary.cities?.toLocaleString("en-US") || "0"} helper={`${summary.routes || 0} active routes`} icon={Building2} />
-        <StatCard label="Missing values" value="0" helper="Cleaned reference data" icon={CheckCheck} tone="green" />
-        <StatCard label="Economy records" value={summary.total_economy?.toLocaleString("en-US") || "0"} helper="Flight options" icon={Users} tone="indigo" />
-        <StatCard label="Business records" value={summary.total_business?.toLocaleString("en-US") || "0"} helper="Flight options" icon={Users} />
+        <StatCard label="Total rekam data" value={summary.total_records?.toLocaleString("id-ID") || "0"} helper="Korpus referensi" icon={Database} />
+        <StatCard label="Maskapai" value={summary.airlines?.toLocaleString("id-ID") || "0"} helper="Maskapai domestik" icon={Plane} tone="indigo" />
+        <StatCard label="Kota" value={summary.cities?.toLocaleString("id-ID") || "0"} helper={`${summary.routes || 0} rute aktif`} icon={Building2} />
+        <StatCard label="Nilai hilang" value="0" helper="Data referensi bersih" icon={CheckCheck} tone="green" />
+        <StatCard label="Data ekonomi" value={summary.total_economy?.toLocaleString("id-ID") || "0"} helper="Opsi penerbangan" icon={Users} tone="indigo" />
+        <StatCard label="Data bisnis" value={summary.total_business?.toLocaleString("id-ID") || "0"} helper="Opsi penerbangan" icon={Users} />
       </div>
 
       <DatasetCharts data={chartData} />
 
       <Card className="overflow-hidden">
         <div className="p-5 sm:p-6">
-          <CardHeader title="Explore flight records" description={`Showing real data from public.flight_prices.`} icon={SlidersHorizontal} action={<Badge tone="blue">Real data</Badge>} />
+          <CardHeader title="Jelajahi data penerbangan" description={`Menampilkan data aktual dari public.flight_prices.`} icon={SlidersHorizontal} action={<Badge tone="blue">Data aktual</Badge>} />
           <div className="mt-5 flex flex-col gap-3 sm:flex-row sm:items-center">
-            <div className="relative min-w-0 flex-1"><Search className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" size={17} aria-hidden="true" /><input aria-label="Search flight records" className="input w-full pl-10" value={localSearch} placeholder="Search airline, flight code, or city…" onChange={(event) => setLocalSearch(event.target.value)} /></div>
-            <button className="button button-ghost shrink-0" onClick={() => { setLocalSearch(""); router.push(pathname); }} disabled={!localSearch && activeFilterCount === 0}>Reset filters{activeFilterCount > 0 ? ` (${activeFilterCount})` : ""}</button>
+            <div className="relative min-w-0 flex-1"><Search className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" size={17} aria-hidden="true" /><input aria-label="Cari data penerbangan" className="input w-full pl-10" value={localSearch} placeholder="Cari maskapai, kode penerbangan, atau kota…" onChange={(event) => setLocalSearch(event.target.value)} /></div>
+            <button className="button button-ghost shrink-0" onClick={() => { setLocalSearch(""); router.push(pathname); }} disabled={!localSearch && activeFilterCount === 0}>Atur ulang saringan{activeFilterCount > 0 ? ` (${activeFilterCount})` : ""}</button>
           </div>
           <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-6">
-            <label className="field"><span className="field-label">Airline</span><select className="select" value={currentParams.airline} onChange={(event) => updateUrl({ airline: event.target.value })}><option value="all">All airlines</option>{uniqueFilters.airlines?.map((v) => <option key={v}>{v}</option>)}</select></label>
-            <label className="field"><span className="field-label">Source city</span><select className="select" value={currentParams.source} onChange={(event) => updateUrl({ source: event.target.value })}><option value="all">All source cities</option>{uniqueFilters.source_cities?.map((v) => <option key={v}>{v}</option>)}</select></label>
-            <label className="field"><span className="field-label">Destination city</span><select className="select" value={currentParams.destination} onChange={(event) => updateUrl({ destination: event.target.value })}><option value="all">All destinations</option>{uniqueFilters.destination_cities?.map((v) => <option key={v}>{v}</option>)}</select></label>
-            <label className="field"><span className="field-label">Class</span><select className="select" value={currentParams.travelClass} onChange={(event) => updateUrl({ travelClass: event.target.value })}><option value="all">All classes</option>{uniqueFilters.classes?.map((v) => <option key={v}>{v}</option>)}</select></label>
-            <label className="field"><span className="field-label">Days left</span><select className="select" value={currentParams.daysRange} onChange={(event) => updateUrl({ days: event.target.value })}><option value="all">1–49 days</option><option value="7">1–7 days</option><option value="14">8–14 days</option><option value="49">15–49 days</option></select></label>
-            <label className="field"><span className="field-label">Price range</span><select className="select" value={currentParams.priceRange} onChange={(event) => updateUrl({ price: event.target.value })}><option value="all">All prices</option><option value="10000">Below ₹10,000</option><option value="30000">₹10,000–29,999</option><option value="above">₹30,000 and above</option></select></label>
+            <label className="field"><span className="field-label">Maskapai</span><select className="select" value={currentParams.airline} onChange={(event) => updateUrl({ airline: event.target.value })}><option value="all">Semua maskapai</option>{uniqueFilters.airlines?.map((v) => <option key={v}>{v}</option>)}</select></label>
+            <label className="field"><span className="field-label">Kota Asal</span><select className="select" value={currentParams.source} onChange={(event) => updateUrl({ source: event.target.value })}><option value="all">Semua kota asal</option>{uniqueFilters.source_cities?.map((v) => <option key={v}>{v}</option>)}</select></label>
+            <label className="field"><span className="field-label">Kota Tujuan</span><select className="select" value={currentParams.destination} onChange={(event) => updateUrl({ destination: event.target.value })}><option value="all">Semua kota tujuan</option>{uniqueFilters.destination_cities?.map((v) => <option key={v}>{v}</option>)}</select></label>
+            <label className="field"><span className="field-label">Kelas</span><select className="select" value={currentParams.travelClass} onChange={(event) => updateUrl({ travelClass: event.target.value })}><option value="all">Semua kelas</option>{uniqueFilters.classes?.map((v) => <option key={v}>{v}</option>)}</select></label>
+            <label className="field"><span className="field-label">Hari tersisa</span><select className="select" value={currentParams.daysRange} onChange={(event) => updateUrl({ days: event.target.value })}><option value="all">1–49 hari</option><option value="7">1–7 hari</option><option value="14">8–14 hari</option><option value="49">15–49 hari</option></select></label>
+            <label className="field"><span className="field-label">Rentang harga</span><select className="select" value={currentParams.priceRange} onChange={(event) => updateUrl({ price: event.target.value })}><option value="all">Semua harga</option><option value="10000">Di bawah ₹10.000</option><option value="30000">₹10.000–29.999</option><option value="above">₹30.000 ke atas</option></select></label>
           </div>
         </div>
-        <DataTable label="Flight record data">
+        <DataTable label="Data rekam penerbangan">
           <thead><tr>
-            <th aria-sort={currentParams.sortKey === "airline" ? currentParams.sortDir === "asc" ? "ascending" : "descending" : "none"}>{sortHeading("Airline", "airline")}</th>
-            <th>Flight</th><th>Source</th><th>Destination</th><th>Class</th><th>Departure</th><th>Arrival</th><th>Stops</th>
-            <th>Duration</th>
-            <th aria-sort={currentParams.sortKey === "daysLeft" ? currentParams.sortDir === "asc" ? "ascending" : "descending" : "none"}>{sortHeading("Days left", "daysLeft")}</th>
-            <th aria-sort={currentParams.sortKey === "price" ? currentParams.sortDir === "asc" ? "ascending" : "descending" : "none"}>{sortHeading("Price (₹)", "price")}</th>
+            <th aria-sort={currentParams.sortKey === "airline" ? currentParams.sortDir === "asc" ? "ascending" : "descending" : "none"}>{sortHeading("Maskapai", "airline")}</th>
+            <th>Penerbangan</th><th>Kota Asal</th><th>Kota Tujuan</th><th>Kelas</th><th>Keberangkatan</th><th>Kedatangan</th><th>Transit</th>
+            <th>Durasi</th>
+            <th aria-sort={currentParams.sortKey === "daysLeft" ? currentParams.sortDir === "asc" ? "ascending" : "descending" : "none"}>{sortHeading("Hari Tersisa", "daysLeft")}</th>
+            <th aria-sort={currentParams.sortKey === "price" ? currentParams.sortDir === "asc" ? "ascending" : "descending" : "none"}>{sortHeading("Harga (₹)", "price")}</th>
           </tr></thead>
           <tbody>{flights.data.map((row) => <tr key={row.id}>
             <td><div className="flex items-center gap-2.5 whitespace-nowrap"><span className="flex size-7 shrink-0 items-center justify-center rounded-full bg-blue-50 font-mono text-[10px] text-blue-700">{(row.flight || '').split("-")[0]}</span><span className="font-medium">{row.airline}</span></div></td>
-            <td className="font-mono text-xs text-slate-500">{row.flight}</td><td>{row.source_city}</td><td>{row.destination_city}</td><td><Badge tone={row.class === "Business" ? "blue" : "slate"}>{row.class}</Badge></td><td className="font-mono text-xs">{row.departure_time}</td><td className="font-mono text-xs">{row.arrival_time}</td><td className="whitespace-nowrap text-slate-500">{row.stops}</td><td className="whitespace-nowrap font-mono text-xs">{Math.floor(row.duration || 0)}h {Math.round(((row.duration || 0) % 1) * 60)}m</td><td><Badge tone={row.days_left <= 7 ? "amber" : "slate"}>{row.days_left} {row.days_left === 1 ? "day" : "days"}</Badge></td><td className="text-right font-mono font-medium"><PriceDisplay amount={row.price} inline /></td>
+            <td className="font-mono text-xs text-slate-500">{row.flight}</td><td>{row.source_city}</td><td>{row.destination_city}</td><td><Badge tone={row.class === "Business" ? "blue" : "slate"}>{row.class}</Badge></td><td className="font-mono text-xs">{row.departure_time}</td><td className="font-mono text-xs">{row.arrival_time}</td><td className="whitespace-nowrap text-slate-500">{row.stops}</td><td className="whitespace-nowrap font-mono text-xs">{Math.floor(row.duration || 0)}j {Math.round(((row.duration || 0) % 1) * 60)}m</td><td><Badge tone={row.days_left <= 7 ? "amber" : "slate"}>{row.days_left} hari</Badge></td><td className="text-right font-mono font-medium"><PriceDisplay amount={row.price} inline /></td>
           </tr>)}</tbody>
         </DataTable>
-        {flights.data.length === 0 && <div className="px-6 py-12 text-center"><Search size={26} className="mx-auto mb-3 text-slate-300" /><p className="font-medium text-slate-700">No flight records match the selected filters.</p><p className="mt-1 text-sm text-slate-500">Try a different city, airline, or price range.</p></div>}
+        {flights.data.length === 0 && <div className="px-6 py-12 text-center"><Search size={26} className="mx-auto mb-3 text-slate-300" /><p className="font-medium text-slate-700">Tidak ada data penerbangan yang cocok dengan saringan.</p><p className="mt-1 text-sm text-slate-500">Coba kota, maskapai, atau rentang harga lain.</p></div>}
         <div className="table-footer flex-wrap gap-4">
-          <p aria-live="polite" className="text-xs text-slate-500">Showing <span className="font-medium text-slate-800">{flights.count === 0 ? 0 : (pageNum - 1) * pageLimit + 1}–{Math.min(pageNum * pageLimit, flights.count)}</span> of {flights.count.toLocaleString("en-US")} records</p>
+          <p aria-live="polite" className="text-xs text-slate-500">Menampilkan <span className="font-medium text-slate-800">{flights.count === 0 ? 0 : (pageNum - 1) * pageLimit + 1}–{Math.min(pageNum * pageLimit, flights.count)}</span> dari {flights.count.toLocaleString("id-ID")} rekam data</p>
           <div className="flex flex-wrap items-center gap-3">
-            <label className="flex items-center gap-2 text-xs text-slate-500">Rows per page<select className="select py-1.5" value={pageLimit} onChange={(event) => updateUrl({ limit: event.target.value, page: "1" })}><option>20</option><option>50</option><option>100</option></select></label>
-            <button aria-label="Previous page" className="button button-secondary p-2" onClick={() => updateUrl({ page: String(pageNum - 1) })} disabled={pageNum <= 1}><ChevronLeft size={16} /></button>
+            <label className="flex items-center gap-2 text-xs text-slate-500">Baris per halaman<select className="select py-1.5" value={pageLimit} onChange={(event) => updateUrl({ limit: event.target.value, page: "1" })}><option>20</option><option>50</option><option>100</option></select></label>
+            <button aria-label="Halaman sebelumnya" className="button button-secondary p-2" onClick={() => updateUrl({ page: String(pageNum - 1) })} disabled={pageNum <= 1}><ChevronLeft size={16} /></button>
             <span className="text-xs text-slate-600">{pageNum} / {totalPages}</span>
-            <button aria-label="Next page" className="button button-secondary p-2" onClick={() => updateUrl({ page: String(pageNum + 1) })} disabled={pageNum >= totalPages}><ChevronRight size={16} /></button>
+            <button aria-label="Halaman berikutnya" className="button button-secondary p-2" onClick={() => updateUrl({ page: String(pageNum + 1) })} disabled={pageNum >= totalPages}><ChevronRight size={16} /></button>
           </div>
         </div>
       </Card>
-      <div className="flex items-start gap-3 rounded-xl border border-emerald-100 bg-emerald-50/60 p-4"><ShieldCheck size={19} className="mt-0.5 shrink-0 text-emerald-600" /><p className="text-xs leading-5 text-slate-600"><strong className="font-semibold text-slate-800">Live Database Connected.</strong> The UI is now powered directly by the Supabase database. Server-side aggregations and real pagination are active.</p></div>
+      <div className="flex items-start gap-3 rounded-xl border border-emerald-100 bg-emerald-50/60 p-4"><ShieldCheck size={19} className="mt-0.5 shrink-0 text-emerald-600" /><p className="text-xs leading-5 text-slate-600"><strong className="font-semibold text-slate-800">Database Langsung Terhubung.</strong> UI sekarang ditenagai langsung oleh database Supabase. Agregasi sisi server dan paginasi nyata telah aktif.</p></div>
       <p className="sr-only" role="status">{notice}</p>
     </div>
   );

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { DatasetExplorer } from "@/components/dataset/dataset-explorer";
 import { getDatasetSummary, getFlightPrices, getUniqueFilters, getAveragePriceByDaysLeft, getAveragePriceByAirline, getClassPriceSummary } from "@/lib/repositories/flight-prices";
 
-export const metadata: Metadata = { title: "Dataset Explorer" };
+export const metadata: Metadata = { title: "Eksplorasi Dataset" };
 
 export default async function DatasetPage({ searchParams }: { searchParams: Promise<{ [key: string]: string | undefined }> }) {
   const sp = await searchParams;

@@ -4,20 +4,20 @@ import { LoaderCircle } from "lucide-react";
 import { ExperimentHistory } from "@/components/experiments/experiment-history";
 import { getExperiments } from "@/lib/repositories/simulations";
 
-export const metadata: Metadata = { title: "Experiments" };
+export const metadata: Metadata = { title: "Eksperimen" };
 
 export default async function ExperimentsPage(props: { searchParams: Promise<{ [key: string]: string | string[] | undefined }> }) {
   const searchParams = await props.searchParams;
   const page = searchParams.page ? parseInt(searchParams.page as string, 10) : 1;
   const search = searchParams.search ? (searchParams.search as string) : undefined;
-  const cabinClass = searchParams.class ? (searchParams.class as string) : "All classes";
+  const cabinClass = searchParams.class ? (searchParams.class as string) : "Semua kelas";
   const sort = searchParams.sort ? (searchParams.sort as string) : "newest";
 
   const { data, count } = await getExperiments({
     page,
     pageSize: 20,
     search,
-    cabinClass: cabinClass === "All classes" ? undefined : cabinClass,
+    cabinClass: cabinClass === "Semua kelas" ? undefined : cabinClass,
     sort
   });
 

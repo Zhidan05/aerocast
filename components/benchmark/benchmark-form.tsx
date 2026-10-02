@@ -23,11 +23,11 @@ export function BenchmarkForm({
 
   return (
     <Card>
-      <CardHeader title="Benchmark Configuration" icon={Settings} />
+      <CardHeader title="Konfigurasi Benchmark" icon={Settings} />
       <form onSubmit={handleSubmit} className="px-5 pb-5 sm:px-6 sm:pb-6 space-y-4">
         <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
           <label className="block text-sm font-medium">
-            Source City
+            Kota Asal
             <input 
               type="text" 
               className="mt-1 block w-full rounded-md border-slate-300 shadow-sm text-sm" 
@@ -37,7 +37,7 @@ export function BenchmarkForm({
             />
           </label>
           <label className="block text-sm font-medium">
-            Destination City
+            Kota Tujuan
             <input 
               type="text" 
               className="mt-1 block w-full rounded-md border-slate-300 shadow-sm text-sm" 
@@ -47,18 +47,18 @@ export function BenchmarkForm({
             />
           </label>
           <label className="block text-sm font-medium">
-            Class
+            Kelas
             <select 
               className="mt-1 block w-full rounded-md border-slate-300 shadow-sm text-sm"
               value={params.flightClass}
               onChange={e => setParams({...params, flightClass: e.target.value})}
             >
-              <option value="Economy">Economy</option>
-              <option value="Business">Business</option>
+              <option value="Economy">Ekonomi</option>
+              <option value="Business">Bisnis</option>
             </select>
           </label>
           <label className="block text-sm font-medium">
-            Days Left
+            Hari Sebelum Keberangkatan
             <input 
               type="number" 
               className="mt-1 block w-full rounded-md border-slate-300 shadow-sm text-sm" 
@@ -68,7 +68,7 @@ export function BenchmarkForm({
             />
           </label>
           <label className="block text-sm font-medium">
-            Tolerance (Days)
+            Toleransi (Hari)
             <input 
               type="number" 
               className="mt-1 block w-full rounded-md border-slate-300 shadow-sm text-sm" 
@@ -80,10 +80,10 @@ export function BenchmarkForm({
         </div>
 
         <div className="pt-4 border-t border-slate-100">
-          <h4 className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-3">Advanced Settings</h4>
+          <h4 className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-3">Pengaturan Lanjutan</h4>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             <label className="block text-sm font-medium">
-              Calibration Ratio
+              Rasio Kalibrasi
               <select 
                 className="mt-1 block w-full rounded-md border-slate-300 shadow-sm text-sm"
                 value={params.calibrationRatio}
@@ -95,7 +95,7 @@ export function BenchmarkForm({
               </select>
             </label>
             <label className="block text-sm font-medium">
-              Split Seed
+              Seed Pembagian
               <input 
                 type="number" 
                 className="mt-1 block w-full rounded-md border-slate-300 shadow-sm text-sm font-mono" 
@@ -105,7 +105,7 @@ export function BenchmarkForm({
               />
             </label>
             <label className="block text-sm font-medium">
-              Monte Carlo Seed
+              Seed Monte Carlo
               <input 
                 type="number" 
                 className="mt-1 block w-full rounded-md border-slate-300 shadow-sm text-sm font-mono" 
@@ -115,15 +115,15 @@ export function BenchmarkForm({
               />
             </label>
             <label className="block text-sm font-medium">
-              MC Iterations
+              Iterasi MC
               <select 
                 className="mt-1 block w-full rounded-md border-slate-300 shadow-sm text-sm"
                 value={params.iterations}
                 onChange={e => setParams({...params, iterations: Number(e.target.value)})}
               >
-                <option value="1000">1,000</option>
-                <option value="10000">10,000</option>
-                <option value="100000">100,000</option>
+                <option value="1000">1.000</option>
+                <option value="10000">10.000</option>
+                <option value="100000">100.000</option>
               </select>
             </label>
           </div>
@@ -135,7 +135,7 @@ export function BenchmarkForm({
             className="button button-primary"
             disabled={loading}
           >
-            {loading ? 'Running Benchmark...' : 'Run Benchmark'}
+            {loading ? 'Menjalankan Benchmark...' : 'Jalankan Benchmark'}
           </button>
         </div>
       </form>

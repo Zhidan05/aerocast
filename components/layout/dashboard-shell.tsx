@@ -13,12 +13,12 @@ export function DashboardShell({ children }: { children: ReactNode }) {
     return () => media.removeEventListener("change", closeOnDesktop);
   }, []);
   return <>
-    <a className="skip-link" href="#main-content">Skip to content</a>
+    <a className="skip-link" href="#main-content">Lewati ke konten</a>
     <AppHeader onOpenMenu={() => drawer.current?.showModal()} />
     <AppSidebar />
-    <dialog ref={drawer} className="navigation-drawer" aria-label="Navigation" onClick={event => { if (event.target === event.currentTarget) drawer.current?.close(); }}>
+    <dialog ref={drawer} className="navigation-drawer" aria-label="Navigasi" onClick={event => { if (event.target === event.currentTarget) drawer.current?.close(); }}>
       <AppSidebar mobile onNavigate={() => drawer.current?.close()} />
     </dialog>
-    <main className="app-main" id="main-content"><div className="content-container">{children}</div><footer className="app-footer"><span>AeroCast <span aria-hidden="true">·</span> Monte Carlo Fare Forecasting</span><span>Illustrative data · Prices in INR (₹)</span></footer></main>
+    <main className="app-main" id="main-content"><div className="content-container">{children}</div><footer className="app-footer"><span>AeroCast <span aria-hidden="true">·</span> Prediksi Harga Monte Carlo</span><span>Data ilustrasi · Harga dalam INR (₹)</span></footer></main>
   </>;
 }

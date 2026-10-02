@@ -53,9 +53,9 @@ export function BenchmarkPageClient() {
   return (
     <>
       <PageHeader 
-        eyebrow="MODEL EVALUATION" 
-        title="Baseline Benchmarking" 
-        description="Compare the Monte Carlo distribution engine against naive historical baselines to evaluate prediction accuracy." 
+        eyebrow="EVALUASI MODEL" 
+        title="Benchmarking Baseline" 
+        description="Bandingkan engine distribusi Monte Carlo dengan baseline historis naif untuk mengevaluasi akurasi prediksi." 
       />
       
       <BenchmarkForm 
@@ -66,7 +66,7 @@ export function BenchmarkPageClient() {
       
       {error && (
         <div className="rounded-lg bg-red-50 p-4 text-sm text-red-700">
-          <strong>Error:</strong> {error}
+          <strong>Kesalahan:</strong> {error}
         </div>
       )}
 
@@ -74,7 +74,7 @@ export function BenchmarkPageClient() {
         <div className="flex items-center justify-center p-12 text-slate-400">
           <div className="animate-pulse flex flex-col items-center gap-2">
             <Scale size={32} className="animate-bounce" />
-            <p>Running baselines on historical data...</p>
+            <p>Menjalankan baseline pada data historis...</p>
           </div>
         </div>
       )}

@@ -28,7 +28,7 @@ export function HistoricalHistogram({ result }: { result: MonteCarloResult }) {
         <XAxis dataKey="shortLabel" tick={axisStyle} axisLine={false} tickLine={false} label={{ value: "Ticket price (₹)", position: "bottom", offset: 7, style: axisStyle }} />
         <YAxis width={38} tick={axisStyle} axisLine={false} tickLine={false} />
         <Tooltip contentStyle={tooltipStyle} cursor={{ fill: "#f1f5f9" }} />
-        <Bar dataKey="frequency" name="Historical records" radius={[5, 5, 0, 0]} maxBarSize={60} isAnimationActive={false}>
+        <Bar dataKey="frequency" name="Rekam data historis" radius={[5, 5, 0, 0]} maxBarSize={60} isAnimationActive={false}>
           {data.map((row, index) => <Cell key={row.label} fill={index === Math.floor(data.length / 2) ? "#2563eb" : "#c7d2fe"} />)}
         </Bar>
       </BarChart>
@@ -55,8 +55,8 @@ export function CumulativeProbabilityChart({ result }: { result: MonteCarloResul
         <CartesianGrid vertical={false} stroke="#e2e8f0" strokeDasharray="3 3" />
         <XAxis dataKey="shortLabel" tick={axisStyle} axisLine={false} tickLine={false} label={{ value: "Ticket price (₹)", position: "bottom", offset: 7, style: axisStyle }} />
         <YAxis domain={[0, 1]} width={42} tick={axisStyle} axisLine={false} tickLine={false} tickFormatter={(value: number) => `${Math.round(value * 100)}%`} />
-        <Tooltip contentStyle={tooltipStyle} formatter={(value) => [`${(Number(value) * 100).toFixed(2)}%`, "Cumulative probability"]} />
-        <Line type="stepAfter" dataKey="cumulative" name="Cumulative probability" stroke="#4f46e5" strokeWidth={2.5} dot={{ r: 4, fill: "#ffffff", strokeWidth: 2 }} isAnimationActive={false} />
+        <Tooltip contentStyle={tooltipStyle} formatter={(value) => [`${(Number(value) * 100).toFixed(2)}%`, "Probabilitas kumulatif"]} />
+        <Line type="stepAfter" dataKey="cumulative" name="Probabilitas kumulatif" stroke="#4f46e5" strokeWidth={2.5} dot={{ r: 4, fill: "#ffffff", strokeWidth: 2 }} isAnimationActive={false} />
       </LineChart>
     </ResponsiveContainer>
   </div>;
@@ -82,7 +82,7 @@ export function SimulatedPriceDistribution({ result }: { result: MonteCarloResul
         <XAxis dataKey="shortLabel" tick={axisStyle} axisLine={false} tickLine={false} label={{ value: "Ticket price (₹)", position: "bottom", offset: 7, style: axisStyle }} />
         <YAxis width={45} tick={axisStyle} axisLine={false} tickLine={false} />
         <Tooltip contentStyle={tooltipStyle} cursor={{ fill: "#f1f5f9" }} />
-        <Bar dataKey="frequency" name="Simulated prices" radius={[5, 5, 0, 0]} maxBarSize={60} isAnimationActive={false}>
+        <Bar dataKey="frequency" name="Harga yang disimulasikan" radius={[5, 5, 0, 0]} maxBarSize={60} isAnimationActive={false}>
           {data.map((row, index) => <Cell key={row.label} fill={"#3b82f6"} />)}
         </Bar>
       </BarChart>
